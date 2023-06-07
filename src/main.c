@@ -43,6 +43,7 @@ void    fdf_creator(char *argv)
             ft_exit("ERR_ALLOC"); 
         }
         fdf_colormap(&data, data.colors);
+        fdf_default(&data);
 
     }
 
