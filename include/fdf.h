@@ -21,9 +21,15 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h> //hypotf
 
 #define FDF_WIDTH 1920
 #define FDF_HEIGHT 1080
+
+# ifndef RAD
+#  define RAD 57.2958
+# endif
+
 
 
 typedef struct s_point
@@ -76,6 +82,25 @@ typedef struct s_mlx
     float iy_cos; //
 }               t_mlx;
 
+typedef struct s_color
+{
+	int				val;
+	unsigned char	r;
+	unsigned char	g;
+	unsigned char	b;
+}					t_color;
+
+
+typedef struct s_bresenham
+{
+	float	ratio;
+	t_point	current;
+	float	diff;
+	float	i;
+	t_color	scl;
+	t_color	ecl;
+}			t_bresenham;
+
 void fdf_creator(char *argv);
 void fdf_init(t_mlx *data);
 
@@ -107,6 +132,45 @@ int	*fdf_colorgradient(t_mlx *data);
 void	fdf_empty_colormap(t_mlx *data, int *colors);
 void	fdf_colormap(t_mlx *data, int *colors);
 long	fdf_colorgradient_indice(t_mlx *data, int x, int y);
+
+int	fdf_parallel(t_mlx *dt);
+int	fdf_flat(t_mlx *dt);
+int	fdf_default(void *param);
+int	fdf_changecolor(t_mlx *dt);
+
+void	fdf_clear_img(t_mlx *data);
+
+//static void	fdf_colorset_screen(t_mlx *data);
+int	fdf_map_to_screen(t_mlx *data);
+
+//static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data);
+//static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data);
+
+void	fdf_map_fill(t_mlx *data);
+
+void	fdf_fill_img(t_mlx *data);
+
+int	fdf_put_pixel(t_mlx *data, int color, char *pixel);
+
+void	fdf_call_put_pixel(t_mlx *data, t_point current);
+void	fdf_bresenham(t_mlx *data, t_point s, t_point e);
+
+int	rgb(unsigned char red, unsigned char green, unsigned char blue);
+
+t_color	rrgb(int color);
+unsigned char	red_part(int color);
+unsigned char	green_part(int color);
+unsigned char	blue_part(int color);
+
+//static int	fdf_bresenham_else_while_color(t_point s, t_point e, t_bresenham vr);
+
+		//static void	fdf_bresenham_else_while(t_mlx *data, t_point s, t_point e, t_bresenham vr);
+		void	fdf_bresenham_else(t_mlx *data, t_point s, t_point e, float ratio);
+
+		//static int	fdf_bresenham_if_while_color(t_point s, t_point e, t_bresenham vr);
+		//static void	fdf_bresenham_if_while(t_mlx *data, t_point s, t_point e, t_bresenham vr);
+		void	fdf_bresenham_if(t_mlx *data, \
+		t_point s, t_point e, float ratio);
 
 
 
