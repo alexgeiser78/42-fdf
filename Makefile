@@ -33,7 +33,17 @@ SRC_FILES = main.c \
 			fdf_findrange.c \
 			fdf_free_all.c \
 			fdf_colorgradient.c \
-			fdf_colormap.c 
+			fdf_colormap.c \
+			fdf_default.c \
+			fdf_clear_img.c \
+			fdf_map_to_screen.c \
+			fdf_map_fill.c \
+			fdf_fill_img.c \
+			fdf_put_pixel.c \
+			fdf_bresenham.c \
+			fdf_color.c \
+			fdf_bresenham_else.c \
+			fdf_bresenham_if.c 
 
 
 
