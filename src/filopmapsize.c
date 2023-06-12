@@ -45,14 +45,16 @@ int	fdf_set_mapsize(int fd, t_mapctr *mapctr)
 		line = get_next_line(fd); //dans le pointeur line on stocke une ligne gnl
 		if (!line)
 			break ; //si on arrive a la fin du fichier on sort de la boucle
-		line_width = fdf_set_mapsize__width(line); //taille de la map en x
+		line_width = fdf_set_mapsize__width(line); //taille de la map en x, compte le nombre de chiffre sur une ligne
 		if (line_width > mapctr->width)
 			mapctr->width = line_width; //on stocke la taille de la map en x dans la structure
 		(mapctr->height)++; //on incremente la taille de la map en y de 1 a chaue saut de ligne
 		free(line); //liberation de la memoire
+//		printf("mapctr->width = %d\n", mapctr->width);//
+//		printf("mapctr->height = %d\n", mapctr->height);//
 	}
 	close(fd); // fermeture du fichier
-	if (mapctr->width <= 0 || mapctr->height <= 0)
+	if (mapctr->width <= 0 || mapctr->height <= 0) //is la taille de la meme est inferieur ou egale a 0
 		return (0);
 	return (1);
 }
@@ -61,9 +63,9 @@ int	fileoperations2(char *argv, t_mlx *data)
 {
 	int	fd;
 
-	fd = open(argv, O_RDONLY);
+	fd = open(argv, O_RDONLY); //re open the file 
 	if (fd == -1)
-		ft_exit("ERRROER");
+		ft_exit("ERROR FD OPEN");
 	fdf_generate_map(fd, &(data->mapctr)); //map.c
 	close(fd);
 	if (!data->mapctr.map)
@@ -71,25 +73,33 @@ int	fileoperations2(char *argv, t_mlx *data)
 	return (1);
 }
 
-int fdf_fileoperations(char *argv, t_mlx *data)
+int fdf_fileoperations(char *argv, t_mlx *data, int fd)
 {
-    int fd;
+//    int fd;
+//	fd = 0;
     
-    fd = open(argv, O_RDONLY);
-    if (fd == -1)
-        ft_exit_no_file(argv);
+//    fd = open(argv, O_RDONLY);
+//    if (fd == -1)
+//        ft_exit_no_file(argv);
     if (fdf_set_mapsize(fd , &(data->mapctr)) != 1) //taille de la map
-        ft_exit("wrong size");
-    data->img.ptr = mlx_new_image(data->ptr, FDF_WIDTH, FDF_HEIGHT); //?
+        ft_exit("at least 1 size is 0 or less");
+    data->img.ptr = mlx_new_image(data->ptr, FDF_WIDTH, FDF_HEIGHT); //image manipulation, args: connec id, wid, heigth
+																	//sorte de tampon a image
     if (!(data->img.ptr))
         ft_exit("mlx_new_image error");
     data->img.str = mlx_get_data_addr(data->img.ptr, \
     &(data->img.bpp), &(data->img.size_line), \
-    &(data->img.endian)); //?
+    &(data->img.endian)); 
     if (!(data->img.str))
         ft_exit("mlx_get_data_addr error");
     return (fileoperations2(argv, data));
 }
+
+//mlx_get_data_addr  //returns information about the created image, allowing a user to modify it later
+//args: img.ptr = specifies the image to use, 
+//img.bpp = bits per pixel, 
+//img.size_line = size of a line of the image in bytes, 
+//img.endian = endian, most significant bit at the smallest address
 
 
 

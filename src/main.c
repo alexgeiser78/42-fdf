@@ -26,14 +26,14 @@ void    fdf_init(t_mlx *data)
     data->mapctr.max = -2147483648; //
 }
 
-void    fdf_creator(char *argv)
+void    fdf_creator(char *argv, int fd)
 {
     t_mlx   data;
 
     fdf_init(&data); //initialise la structure
     data.ptr = mlx_init(); //initie la connection avec le serveur graphique
     
-    if (fdf_fileoperations(argv, &data) == 1)
+    if (fdf_fileoperations(argv, &data, fd) == 1)
     {
         data.win = mlx_new_window(data.ptr, FDF_WIDTH, FDF_HEIGHT, argv); //creer et ouvrir une fenetre
         data.colors = fdf_colorgradient(&data);
@@ -64,7 +64,7 @@ if (fd == -1)
 
 //    mlx_pixel_put(mlx_ptr, win_ptr, 100, 100, 0xFFFFFF); //dessine un pixel
 
-    fdf_creator (argv[1]);
+    fdf_creator (argv[1], fd);
     close(fd);
     return(0);
 } 

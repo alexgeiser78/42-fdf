@@ -48,7 +48,7 @@ t_point	**fdf_generate_map(int fd, t_mapctr *mapctr)
 		i++;
 	}
 	mapctr->map = map;
-	fdf_map_fill_z(mapctr, fd);
+//	fdf_map_fill_z(mapctr, fd); //axe z
 	fdf_findrange(mapctr);
 	return (map);
 }
