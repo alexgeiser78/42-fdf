@@ -42,7 +42,7 @@ typedef struct s_point
 
 typedef struct s_mapctr
 {
-	t_point		**map;//
+	t_point		**map;// tableau 2D axe x et y
 	int			width;//
 	int			height;//
 	long		min;
@@ -101,7 +101,7 @@ typedef struct s_bresenham
 	t_color	ecl;
 }			t_bresenham;
 
-void fdf_creator(char *argv);
+void fdf_creator(char *argv, int fd);
 void fdf_init(t_mlx *data);
 
 void ft_exit(char *str);
@@ -113,7 +113,7 @@ int ft_width(char **character);
 char **str_data(int fd, int height, char *argv);
 void invalid_file_msg(int ft_return, char *argv);
 int ft_wordcount(char *str, char c);
-int fdf_fileoperations(char *argv, t_mlx *data);
+int fdf_fileoperations(char *argv, t_mlx *data, int fd);
 int	fileoperations2(char *argv, t_mlx *data);
 int	fdf_set_mapsize(int fd, t_mapctr *mapctr);
 int	fdf_set_mapsize__width(char *line);
