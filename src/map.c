@@ -15,9 +15,9 @@ void	fdf_map_fill_z(t_mapctr *m, int fd)
 		x = 0;
 		while (x < m->width)
 		{
-			if (line[i] != ' ' && line[i] != '\n')
+			if (line[i] != ' ' && line[i] != '\n') 
 			{
-				((m->map)[x][y]).z = (float)fdf_atoi_color(line + i, m, x, y);
+				((m->map)[x][y]).z = (float)fdf_atoi_color(line + i, m, x, y); // dans la struct, pour z, on lui attribue une valeur  
 				x++;
 				while (line[i] && line[i] != ' ' && line[i] != '\n')
 					i++;
@@ -25,9 +25,14 @@ void	fdf_map_fill_z(t_mapctr *m, int fd)
 			else
 				i++;
 		}
+		//printf("m->height = %d\n", m->height);//
+		//printf("m->width = %d\n", m->width);//
+		//printf("i = %ld\n", i); //
 		free(line);
 	}
 }
+
+//*m est un renvoi vers la structure mapctr
 
 t_point	**fdf_generate_map(int fd, t_mapctr *mapctr)
 {
@@ -47,10 +52,10 @@ t_point	**fdf_generate_map(int fd, t_mapctr *mapctr)
 			fdf_free_map(map);
 		i++;
 	}
-	mapctr->map = map;
-//	fdf_map_fill_z(mapctr, fd); //axe z
+	mapctr->map = map; // map 2D
+	fdf_map_fill_z(mapctr, fd); //axe z
 	fdf_findrange(mapctr);
 	return (map);
 }
 
-//createur de malloc pour la map
+//createur de malloc pour la map, tableau 2D avec axe x et y
