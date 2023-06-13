@@ -34,19 +34,19 @@
 
 typedef struct s_point
 {
-	float	x;
+	float	x; 
 	float	y;
 	float	z;
-	int		color;
+	int		color; //valeur de la couleurt en nombre hexadec
 }		t_point;
 
 typedef struct s_mapctr
 {
 	t_point		**map;// tableau 2D axe x et y
-	int			width;//
-	int			height;//
-	long		min;
-	long		max;
+	int			width;// nombre de colones
+	int			height;// nombre de lignes
+	long		min; //nbr min
+	long		max; //nbr max
 	long		range;//
 	long		translatex; //
 	long		translatey;//
@@ -67,7 +67,7 @@ typedef struct s_mlx
 {
     void *ptr; 
     void *win; 
-    t_mapctr mapctr;
+    t_mapctr mapctr; //structure mapctr avec argument mapctr 
     t_mlximg img;
     int *colors;
     int nbrcolors; //
