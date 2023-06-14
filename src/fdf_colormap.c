@@ -10,7 +10,8 @@ long	fdf_colorgradient_indice(t_mlx *data, int x, int y)
 	range = data->mapctr.range;
 	max = data->mapctr.max;
 	point = (data->mapctr.map[x][y].z);
-	indice = ((range - (max - point)) * data->nbrcolors) / range;
+	indice = ((range - (max - point)) * data->nbrcolors) / range; 
+	//printf("indice = %ld\n", indice);//
 	return (indice);
 }
 
@@ -44,7 +45,7 @@ void	fdf_colormap(t_mlx *data, int *colors)
 
 	if (!colors)
 	{
-		ft_exit("ERR_ALLOC");
+		ft_exit("Unattributed Color");
 	}
 	x = 0;
 	while (x < data->mapctr.width)

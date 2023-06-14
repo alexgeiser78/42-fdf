@@ -21,7 +21,7 @@ void    fdf_init(t_mlx *data)
     data->img.ptr = NULL;//
     data->img.str = NULL;//
     data->colors = NULL;//
-    data->gradient = 1;//
+    data->gradient = 1;// pas trouve comment le gradient peut etre superieur a 1
     data->mapctr.min = 2147483647; //
     data->mapctr.max = -2147483648; //
 }
@@ -36,11 +36,11 @@ void    fdf_creator(char *argv, int fd)
     if (fdf_fileoperations(argv, &data, fd) == 1)
     {
         data.win = mlx_new_window(data.ptr, FDF_WIDTH, FDF_HEIGHT, argv); //creer et ouvrir une fenetre
-        data.colors = fdf_colorgradient(&data);
+        data.colors = fdf_colorgradient(&data); //
         if (!(data.colors))
         {
-			fdf_free_all(&data); //printf
-            ft_exit("ERR_ALLOC"); 
+			fdf_free_all(&data);
+            ft_exit("Unattributed Color"); 
         }
         fdf_colormap(&data, data.colors);
         fdf_default(&data);

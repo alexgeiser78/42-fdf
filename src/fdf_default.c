@@ -78,7 +78,7 @@ int	fdf_changecolor(t_mlx *dt)
 	dt->colors = NULL;
 	dt->gradient += 1;
 	dt->colors = fdf_colorgradient(dt);
-	fdf_empty_colormap(dt, dt->colors);
+	fdf_empty_colormap(dt, dt->colors); //permet de mettre l'arguement color(z) a 0
 	fdf_colormap(dt, dt->colors);
 	fdf_map_to_screen(dt);
 	return (1);

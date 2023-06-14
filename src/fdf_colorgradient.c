@@ -1,5 +1,6 @@
 #include "../include/fdf.h"
 
+/* White -> Blue */
 int	*fdf_colorgradient_1(t_mlx *data)
 {
 	int		*tab;
@@ -9,7 +10,7 @@ int	*fdf_colorgradient_1(t_mlx *data)
 	tab = malloc(sizeof(int) * (255 + 1));
 	if (!tab)
 		return (NULL);
-	color = 0xffffff;
+	color = 0xffffff; //white
 	i = 0;
 	while (1)
 	{
@@ -34,7 +35,7 @@ int	*fdf_colorgradient_2(t_mlx *data)
 	tab = malloc(sizeof(int) * (255 + 1));
 	if (!tab)
 		return (NULL);
-	color = 0xffff00;
+	color = 0xffff00; //Yellow
 	i = 0;
 	while (1)
 	{
@@ -58,7 +59,7 @@ int	*fdf_colorgradient_3(t_mlx *data)
 	tab = malloc(sizeof(int) * (255 + 1));
 	if (!tab)
 		return (NULL);
-	color = 0x00ffff;
+	color = 0x00ffff; //aqua
 	i = 0;
 	while (1)
 	{
@@ -83,7 +84,7 @@ int	*fdf_colorgradient_4(t_mlx *data)
 	tab = malloc(sizeof(int) * (255 + 1));
 	if (!tab)
 		return (NULL);
-	color = 0xffff00;
+	color = 0xffff00; //yellow 2?
 	i = 0;
 	while (1)
 	{

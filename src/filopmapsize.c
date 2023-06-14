@@ -69,7 +69,7 @@ int	fileoperations2(char *argv, t_mlx *data)
 	fdf_generate_map(fd, &(data->mapctr)); //map.c
 	close(fd);
 	if (!data->mapctr.map)
-		ft_exit("ERRROERsfgasfg");
+		ft_exit("No MAP");
 	return (1);
 }
 
