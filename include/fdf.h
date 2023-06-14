@@ -34,10 +34,10 @@
 
 typedef struct s_point
 {
-	float	x; 
-	float	y;
-	float	z;
-	int		color; //valeur de la couleurt en nombre hexadec
+	float	x; //axe x
+	float	y; // axe y
+	float	z; // axe z
+	int		color; //valeur de la couleur en nombre hexadec
 }		t_point;
 
 typedef struct s_mapctr
@@ -45,9 +45,9 @@ typedef struct s_mapctr
 	t_point		**map;// tableau 2D axe x et y
 	int			width;// nombre de colones
 	int			height;// nombre de lignes
-	long		min; //nbr min
-	long		max; //nbr max
-	long		range;//
+	long		min; //nbr min linked to the gradient
+	long		max; //nbr max linked to the gradient
+	long		range;// linked to gradient and color == max - min
 	long		translatex; //
 	long		translatey;//
 	float		xorigin;//
@@ -65,13 +65,13 @@ typedef struct s_mlximg
 
 typedef struct s_mlx
 {
-    void *ptr; 
-    void *win; 
+    void *ptr; //mlx_init 
+    void *win; //mlx_new_window
     t_mapctr mapctr; //structure mapctr avec argument mapctr 
     t_mlximg img;
-    int *colors;
-    int nbrcolors; //
-    int gradient;
+    int *colors; // pointeur sur un tableau de 256 cases de degrade de couleur
+    int nbrcolors; // nombre de degrades de couleur
+    int gradient; //vecteur indiquant comment une grandeur physique varie dans l'espace, degrade de couleur
     float scale; //
     float relief; //
     float deg; //
