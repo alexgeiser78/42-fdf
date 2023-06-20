@@ -71,3 +71,5 @@ unsigned char	blue_part(int color)
 	blue = color;
 	return (blue);
 }
+
+//les rgb part servent a filtrer les information pour n'avoir qu'une valeur en tre 0 et 255

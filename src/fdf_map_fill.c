@@ -7,7 +7,7 @@ static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 	float	old_x;
 	t_point	*cur;
 
-	mapctr->xorigin = (((float)mapctr->width - 1.0) / 2) * data->scale;
+	mapctr->xorigin = (((float)mapctr->width - 1.0) / 2) * data->scale; // probablement le cntre de rotation 
 	mapctr->yorigin = (((float)mapctr->height - 1.0) / 2) * data->scale;
 	y = -1;
 	while (++y < mapctr->height)
@@ -24,7 +24,7 @@ static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 			cur->y = cur->y * data->iy_sin + cur->y * data->iy_cos + \
 					FDF_HEIGHT / 2 + mapctr->translatey;
 			cur->x = cur->x * 1.41421356237 + FDF_WIDTH / 2 + \
-					mapctr->translatex;
+					mapctr->translatex; //1.41 == racine carree de 2
 		}
 	}
 }

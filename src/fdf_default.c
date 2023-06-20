@@ -43,12 +43,11 @@ int	fdf_flat(t_mlx *dt)
 int	fdf_default(void *param)
 {
 	t_mlx	*dt;
-
 	dt = (t_mlx *)param;
-	fdf_clear_img(dt);
+	//fdf_clear_img(dt); necessaire ou pas?
 	if (FDF_WIDTH <= FDF_HEIGHT && dt->mapctr.width > dt->mapctr.height)
 		dt->scale = FDF_WIDTH / hypotf(dt->mapctr.width, \
-	dt->mapctr.width);
+	dt->mapctr.width);//si la largeur est plus grande que la longueur on stocke dans l'argument scale la valeur de 
 	else if (FDF_WIDTH <= FDF_HEIGHT)
 		dt->scale = FDF_WIDTH / hypotf(dt->mapctr.height, \
 	dt->mapctr.height);
@@ -67,6 +66,8 @@ int	fdf_default(void *param)
 	fdf_map_to_screen(dt);
 	return (1);
 }
+
+//hypotf permet de calculer la racine carre de la somme des carre de x et y
 
 int	fdf_changecolor(t_mlx *dt)
 {

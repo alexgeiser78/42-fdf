@@ -16,11 +16,12 @@ static int	fdf_bresenham_if_while_color(t_point s, t_point e, t_bresenham vr)
 	(vr.ecl.b * (1 - ((vr.current.x - e.x) / vr.diff)))));
 	return (vr.current.color);
 }
+//rgb est une fonction qui permet de mettre en bit les 3 x 256
 
 static void	fdf_bresenham_if_while(t_mlx *data, \
 		t_point s, t_point e, t_bresenham vr)
 {
-	while ((int)(vr.current.x + 0.5) != (int)(e.x + 0.5))
+	while ((int)(vr.current.x + 0.5) != (int)(e.x + 0.5)) //0.5 = approximation pour savoir si il vaut mieux dessiner un pixel plutot qu'un autre
 	{
 		vr.current.color = fdf_bresenham_if_while_color(s, e, vr);
 		if (vr.current.x < e.x)
@@ -49,7 +50,7 @@ void	fdf_bresenham_if(t_mlx *data, \
 		return ;
 	vr.scl = rrgb(s.color);
 	vr.ecl = rrgb(e.color);
-	vr.diff = fabs(e.x - s.x);
+	vr.diff = fabs(e.x - s.x); // relie les point entre eux en valeur absolue
 	vr.current = s;
 	vr.ratio = ratio;
 	vr.i = 0;

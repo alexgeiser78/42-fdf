@@ -13,13 +13,13 @@ void	fdf_bresenham(t_mlx *data, t_point s, t_point e)
 	float	yrange;
 	float	ratio;
 
-	xrange = e.x - s.x;
-	if (xrange < 0)
-		xrange = xrange * -1;
+	xrange = e.x - s.x; //calcul d'une moyenne sur l'axe x
+	if (xrange < 0) //si resultat negatif
+		xrange = xrange * -1; //on le converti en positif
 	yrange = e.y - s.y;
 	if (yrange < 0)
 		yrange = yrange * -1;
-	if (xrange > yrange)
+	if (xrange > yrange) //si x est plus grand que y
 	{
 		ratio = yrange / xrange;
 		fdf_bresenham_if(data, s, e, ratio);
