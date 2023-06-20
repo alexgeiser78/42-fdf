@@ -25,7 +25,6 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 RM = rm -rf
 
 SRC_FILES = main.c \
-            divers.c \
 			error.c \
 			filopmapsize.c \
 			map.c \
