@@ -27,7 +27,7 @@
 #define FDF_HEIGHT 1080
 
 # ifndef RAD
-#  define RAD 57.2958
+#  define RAD 57.2958 //1 radian = 57.2958 deg
 # endif
 
 
@@ -48,10 +48,10 @@ typedef struct s_mapctr
 	long		min; //nbr min linked to the gradient
 	long		max; //nbr max linked to the gradient
 	long		range;// linked to gradient and color == max - min
-	long		translatex; //
-	long		translatey;//
-	float		xorigin;//
-	float		yorigin;//
+	long		translatex; // decalage de l'image sur l'axe x 
+	long		translatey;// decalage de l'image sur l'axe x
+	float		xorigin;// centre de rotation probable
+	float		yorigin;// centre de rotation probable
 }				t_mapctr;
 
 typedef struct s_mlximg
@@ -68,37 +68,37 @@ typedef struct s_mlx
     void *ptr; //mlx_init 
     void *win; //mlx_new_window
     t_mapctr mapctr; //structure mapctr avec argument mapctr 
-    t_mlximg img;
+    t_mlximg img; //
     int *colors; // pointeur sur un tableau de 256 cases de degrade de couleur
     int nbrcolors; // nombre de degrades de couleur
     int gradient; //vecteur indiquant comment une grandeur physique varie dans l'espace, degrade de couleur
-    float scale; //
-    float relief; //
-    float deg; //
-    float deg_sin; //
-    float deg_cos; //
-    float iy; //
-    float iy_sin; //
-    float iy_cos; //
+    float scale; // valeur de l'hypothenus de height et width
+    float relief; // echelle de la hauteur y
+    float deg; // orientation de l'image (+45 deg)
+    float deg_sin; //sinus (deg / RAD) 
+    float deg_cos; // cosinus (deg / RAD)
+    float iy; // pivotement sur son axe y
+    float iy_sin; // sinus (iy / RAD)
+    float iy_cos; // cosinus (iy / RAD)
 }               t_mlx;
 
 typedef struct s_color
 {
-	int				val;
-	unsigned char	r;
-	unsigned char	g;
-	unsigned char	b;
+	int				val; //
+	unsigned char	r; // rouge 
+	unsigned char	g; // vert
+	unsigned char	b; // bleu
 }					t_color;
 
 
 typedef struct s_bresenham
 {
-	float	ratio;
-	t_point	current;
-	float	diff;
-	float	i;
-	t_color	scl;
-	t_color	ecl;
+	float	ratio; // rapport entre x et y
+	t_point	current; //
+	float	diff; //
+	float	i; //
+	t_color	scl; // s color
+	t_color	ecl; // e color
 }			t_bresenham;
 
 void fdf_creator(char *argv, int fd);
