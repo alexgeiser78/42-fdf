@@ -15,7 +15,6 @@
 # define FDF_H
 
 #include "../minilibx/mlx.h"
-// #include "../src/get_next_line.h"
 #include "../libft/libft.h"
 #include <fcntl.h> //open
 #include <unistd.h>
@@ -101,82 +100,69 @@ typedef struct s_bresenham
 	t_color	ecl; // e color
 }			t_bresenham;
 
-void fdf_creator(char *argv, int fd);
-void fdf_init(t_mlx *data);
+void fdf_creator(char *argv, int fd); //
+void fdf_init(t_mlx *data); //
 
-void ft_exit(char *str);
-//size_t ft_putstr( char *s);
-void ft_exit_no_file(char *argv);
+void ft_exit(char *str); //
+void ft_exit_no_file(char *argv); //
 
-int line_counter(int fd, int height);
-int ft_width(char **character);
-char **str_data(int fd, int height, char *argv);
-void invalid_file_msg(int ft_return, char *argv);
-int ft_wordcount(char *str, char c);
-int fdf_fileoperations(char *argv, t_mlx *data, int fd);
-int	fileoperations2(char *argv, t_mlx *data);
-int	fdf_set_mapsize(int fd, t_mapctr *mapctr);
-int	fdf_set_mapsize__width(char *line);
-t_point	**fdf_generate_map(int fd, t_mapctr *mapctr);
-int	fdf_atoi_getcolor(const char *str);
-int	fdf_atoi_color(const char *str, t_mapctr *mapctr, int x, int y);
-int	fdf_free_all(t_mlx *data);
-void	fdf_free_map(t_point **map);
-void	fdf_findrangee(t_mapctr *mapctr);
-void	fdf_findrange(t_mapctr *mapctr);
-int	*fdf_colorgradient_1(t_mlx *data);
-int	*fdf_colorgradient_2(t_mlx *data);
-int	*fdf_colorgradient_3(t_mlx *data);
-int	*fdf_colorgradient_4(t_mlx *data);
-int	*fdf_colorgradient(t_mlx *data);
-void	fdf_empty_colormap(t_mlx *data, int *colors);
-void	fdf_colormap(t_mlx *data, int *colors);
-long	fdf_colorgradient_indice(t_mlx *data, int x, int y);
+int fdf_fileoperations(char *argv, t_mlx *data, int fd);//
+int	fdf_set_mapsize(int fd, t_mapctr *mapctr); //
+int	fdf_set_mapsize__width(char *line); //
+int	fileoperations2(char *argv, t_mlx *data); //
+t_point	**fdf_generate_map(int fd, t_mapctr *mapctr); //
+void	fdf_free_map(t_point **map); //
+int	fdf_atoi_color(const char *str, t_mapctr *mapctr, int x, int y); //
+int	fdf_atoi_getcolor(const char *str); //
+void	fdf_findrange(t_mapctr *mapctr); //
+void	fdf_findrangee(t_mapctr *mapctr); //
+int	*fdf_colorgradient(t_mlx *data); //
+int	*fdf_colorgradient_1(t_mlx *data); //
+int	*fdf_colorgradient_2(t_mlx *data); //
+int	*fdf_colorgradient_3(t_mlx *data); //
+int	*fdf_colorgradient_4(t_mlx *data); //
+int	fdf_free_all(t_mlx *data); //
+void	fdf_colormap(t_mlx *data, int *colors); //
+long	fdf_colorgradient_indice(t_mlx *data, int x, int y); //
+int	fdf_default(void *param); //
+int	fdf_map_to_screen(t_mlx *data); //
+void	fdf_map_fill(t_mlx *data); //
+//static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data); //
+//static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data); //
+void	fdf_fill_img(t_mlx *data); //
+int	fdf_put_pixel(t_mlx *data, int color, char *pixel); //
+t_color	rrgb(int color); //
+void	fdf_bresenham(t_mlx *data, t_point s, t_point e); //
+void	fdf_bresenham_if(t_mlx *data, \
+t_point s, t_point e, float ratio); //
+//static void	fdf_bresenham_if_while(t_mlx *data, t_point s, t_point e, t_bresenham vr); //
+//static int	fdf_bresenham_if_while_color(t_point s, t_point e, t_bresenham vr); //
+int	rgb(unsigned char red, unsigned char green, unsigned char blue); //
+void	fdf_call_put_pixel(t_mlx *data, t_point current); //
+void	fdf_bresenham_else(t_mlx *data, t_point s, t_point e, float ratio); //
+//static void	fdf_bresenham_else_while(t_mlx *data, t_point s, t_point e, t_bresenham vr); //
+//static int	fdf_bresenham_else_while_color(t_point s, t_point e, t_bresenham vr); //
 
-int	fdf_parallel(t_mlx *dt);
-int	fdf_flat(t_mlx *dt);
-int	fdf_default(void *param);
-int	fdf_changecolor(t_mlx *dt);
+///////////////////////////////////////////
+//int line_counter(int fd, int height);
+//int ft_width(char **character);
+//char **str_data(int fd, int height, char *argv);
+//void invalid_file_msg(int ft_return, char *argv);
+//int ft_wordcount(char *str, char c);
 
-void	fdf_clear_img(t_mlx *data);
+//void	fdf_empty_colormap(t_mlx *data, int *colors);
+
+//int	fdf_parallel(t_mlx *dt);
+//int	fdf_flat(t_mlx *dt);
+
+//int	fdf_changecolor(t_mlx *dt);
+
+//void	fdf_clear_img(t_mlx *data);
 
 //static void	fdf_colorset_screen(t_mlx *data);
-int	fdf_map_to_screen(t_mlx *data);
 
-//static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data);
-//static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data);
-
-void	fdf_map_fill(t_mlx *data);
-
-void	fdf_fill_img(t_mlx *data);
-
-int	fdf_put_pixel(t_mlx *data, int color, char *pixel);
-
-void	fdf_call_put_pixel(t_mlx *data, t_point current);
-void	fdf_bresenham(t_mlx *data, t_point s, t_point e);
-
-int	rgb(unsigned char red, unsigned char green, unsigned char blue);
-
-t_color	rrgb(int color);
-unsigned char	red_part(int color);
-unsigned char	green_part(int color);
-unsigned char	blue_part(int color);
-
-//static int	fdf_bresenham_else_while_color(t_point s, t_point e, t_bresenham vr);
-
-		//static void	fdf_bresenham_else_while(t_mlx *data, t_point s, t_point e, t_bresenham vr);
-		void	fdf_bresenham_else(t_mlx *data, t_point s, t_point e, float ratio);
-
-		//static int	fdf_bresenham_if_while_color(t_point s, t_point e, t_bresenham vr);
-		//static void	fdf_bresenham_if_while(t_mlx *data, t_point s, t_point e, t_bresenham vr);
-		void	fdf_bresenham_if(t_mlx *data, \
-		t_point s, t_point e, float ratio);
-
-
-
-
-
-
-
+//unsigned char	red_part(int color);
+//unsigned char	green_part(int color);
+//unsigned char	blue_part(int color);
 
 #endif
