@@ -1,5 +1,5 @@
 #include "../include/fdf.h"
-
+/*
 int	fdf_parallel(t_mlx *dt)
 {
 	fdf_clear_img(dt);
@@ -39,7 +39,7 @@ int	fdf_flat(t_mlx *dt)
 	fdf_map_to_screen(dt);
 	return (1);
 }
-
+*/
 int	fdf_default(void *param)
 {
 	t_mlx	*dt;
@@ -68,7 +68,7 @@ int	fdf_default(void *param)
 }
 
 //hypotf permet de calculer la racine carre de la somme des carre de x et y
-
+/*
 int	fdf_changecolor(t_mlx *dt)
 {
 	if (dt->colors)
@@ -83,4 +83,4 @@ int	fdf_changecolor(t_mlx *dt)
 	fdf_colormap(dt, dt->colors);
 	fdf_map_to_screen(dt);
 	return (1);
-}
+}*/

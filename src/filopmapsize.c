@@ -53,7 +53,7 @@ int	fdf_set_mapsize(int fd, t_mapctr *mapctr)
 //		printf("mapctr->width = %d\n", mapctr->width);//
 //		printf("mapctr->height = %d\n", mapctr->height);//
 	}
-	close(fd); // fermeture du fichier
+	//close(fd); // fermeture du fichier
 	if (mapctr->width <= 0 || mapctr->height <= 0) //is la taille de la meme est inferieur ou egale a 0
 		return (0);
 	return (1);
