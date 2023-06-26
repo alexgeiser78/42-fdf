@@ -17,11 +17,11 @@ int	fdf_set_mapsize__width(char *line)
 			/*if (line[i] == '0' && line [i + 1] == 'x' && i++)                    // quoi?
 			{
 				while (line[++i])
-					if (!(('0' <= line[i] && line[i] <= '9')
-							|| ('a' <= line[i] && line[i] <= 'f')
-							|| ('A' <= line[i] && line[i] <= 'F')))
+					if (!((line[i] >= '0' && line[i] <= '9')
+							|| (line[i] >= 'a' && line[i] <= 'f')
+							|| (line[i] >= 'A' && line[i] <= 'F')))
 						break ;
-			}*/
+			} un file peut contenir directement des codes couleurs*/
 		}
 		else
 			i++;
@@ -49,9 +49,7 @@ int	fdf_set_mapsize(int fd, t_mapctr *mapctr)
 		if (line_width > mapctr->width)
 			mapctr->width = line_width; //on stocke la taille de la map en x dans la structure
 		(mapctr->height)++; //on incremente la taille de la map en y de 1 a chaue saut de ligne
-		free(line); //liberation de la memoire
-//		printf("mapctr->width = %d\n", mapctr->width);//
-//		printf("mapctr->height = %d\n", mapctr->height);//
+		free(line); //liberation de la memoire		
 	}
 	//close(fd); // fermeture du fichier
 	if (mapctr->width <= 0 || mapctr->height <= 0) //is la taille de la meme est inferieur ou egale a 0
@@ -83,7 +81,7 @@ int fdf_fileoperations(char *argv, t_mlx *data, int fd)
 //        ft_exit_no_file(argv);
     if (fdf_set_mapsize(fd , &(data->mapctr)) != 1) //taille de la map
         ft_exit("at least 1 size is 0 or less");
-    data->img.ptr = mlx_new_image(data->ptr, FDF_WIDTH, FDF_HEIGHT); //image manipulation, args: connec id, wid, heigth
+    data->img.ptr = mlx_new_image(data->ptr, FDF_WIDTH, FDF_HEIGHT);//image manipulation, args: connec id, wid, heigth
 																	//sorte de tampon a image
     if (!(data->img.ptr))
         ft_exit("mlx_new_image error");

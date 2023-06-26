@@ -17,7 +17,8 @@ void	fdf_map_fill_z(t_mapctr *m, int fd)
 		{
 			if (line[i] != ' ' && line[i] != '\n') 
 			{
-				((m->map)[x][y]).z = (float)fdf_atoi_color(line + i, m, x, y); // dans la struct, pour z, on lui attribue une valeur  
+				((m->map)[x][y]).z = (float)fdf_atoi_color(line + i, m, x, y); // dans la struct, pour z, on lui attribue une valeur en int car dans le fichier fdf il y a que des valeurs en char
+				//printf("t_point->z = %f\n", m->map[x][y].z);//valeur de z
 				x++;
 				while (line[i] && line[i] != ' ' && line[i] != '\n')
 					i++;
@@ -36,18 +37,18 @@ void	fdf_map_fill_z(t_mapctr *m, int fd)
 
 t_point	**fdf_generate_map(int fd, t_mapctr *mapctr)
 {
-	t_point		**map;
+	t_point		**map; //pointeur 2D pour stocker les axes x et y
 	long		i;
 
 	if (fd == -1 || mapctr->width <= 0 || mapctr->height <= 0)
 		return (NULL);
-	map = ft_calloc(sizeof(t_point *), mapctr->width + 1);
+	map = ft_calloc(sizeof(t_point *), mapctr->width + 1); //calloc de l'axe x
 	if (!map)
 		return (NULL);
 	i = 0;
 	while (i < mapctr->width)
 	{
-		map[i] = ft_calloc(sizeof(t_point), mapctr->height);
+		map[i] = ft_calloc(sizeof(t_point), mapctr->height); //calloc de l'axe
 		if (!map[i])
 			fdf_free_map(map);
 		i++;
