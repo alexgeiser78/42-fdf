@@ -35,8 +35,8 @@ typedef struct s_point
 {
 	float	x; //axe x
 	float	y; // axe y
-	float	z; // axe z
-	int		color; //valeur de la couleur en nombre hexadec
+	float	z; // axe z, valeur en char
+	int		color; //valeur de la couleur en int
 }		t_point;
 
 typedef struct s_mapctr
@@ -55,11 +55,11 @@ typedef struct s_mapctr
 
 typedef struct s_mlximg
 {
-	void	*ptr;
-	char	*str;
-	int		bpp; //
-	int		size_line; //
-	int		endian; //
+	void	*ptr; //mlx_new_image
+	char	*str; //mlx_get_data_addr 
+	int		bpp; // bit per pixel
+	int		size_line; // longuer d'une ligne de fichioer fdf
+	int		endian; // most significant byte of the pixel
 }			t_mlximg;
 
 typedef struct s_mlx
@@ -67,7 +67,7 @@ typedef struct s_mlx
     void *ptr; //mlx_init 
     void *win; //mlx_new_window
     t_mapctr mapctr; //structure mapctr avec argument mapctr 
-    t_mlximg img; //
+    t_mlximg img; // structure mlximg avec argument image pour le dessin de l'image
     int *colors; // pointeur sur un tableau de 256 cases de degrade de couleur
     int nbrcolors; // nombre de degrades de couleur
     int gradient; //vecteur indiquant comment une grandeur physique varie dans l'espace, degrade de couleur
@@ -142,7 +142,7 @@ void	fdf_call_put_pixel(t_mlx *data, t_point current); //
 void	fdf_bresenham_else(t_mlx *data, t_point s, t_point e, float ratio); //
 //static void	fdf_bresenham_else_while(t_mlx *data, t_point s, t_point e, t_bresenham vr); //
 //static int	fdf_bresenham_else_while_color(t_point s, t_point e, t_bresenham vr); //
-
+void	fdf_print_me_all(t_mlx *data, t_mapctr *mapctr); // personal checker
 ///////////////////////////////////////////
 //int line_counter(int fd, int height);
 //int ft_width(char **character);
