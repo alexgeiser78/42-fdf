@@ -46,7 +46,7 @@ typedef struct s_mapctr
 	int			height;// nombre de lignes
 	long		min; //nbr min linked to the gradient
 	long		max; //nbr max linked to the gradient
-	long		range;// linked to gradient and color == max - min
+	long		range;//  diff between max z and min z linked to gradient and color == max - min
 	long		translatex; // decalage de l'image sur l'axe x 
 	long		translatey;// decalage de l'image sur l'axe x
 	float		xorigin;// centre de rotation probable
