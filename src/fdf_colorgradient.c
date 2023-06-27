@@ -17,8 +17,8 @@ int	*fdf_colorgradient_1(t_mlx *data)
 		tab[i] = color;
 		if (i >= 255)
 			break ;
-		color -= 0x000100;
-		color -= 0x010000;
+		color -= 0x000100; //?
+	//	color -= 0x010000; //?
 		i++;
 	}
 	data->nbrcolors = 255;
@@ -101,6 +101,7 @@ int	*fdf_colorgradient_4(t_mlx *data)
 
 int	*fdf_colorgradient(t_mlx *data)
 {
+	printf("data->gradient = %d\n", data->gradient);//
 	if (data->gradient == 1)
 		return (fdf_colorgradient_1(data));
 	else if (data->gradient == 2)
