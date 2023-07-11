@@ -36,7 +36,7 @@ typedef struct s_point
 	float	x; //axe x
 	float	y; // axe y
 	float	z; // axe z, valeur en char
-	int		color; //valeur de la couleur en int
+	int		color; //valeur de la couleur en int, mais qui deviendra tripotee par brensenham if
 }		t_point;
 
 typedef struct s_mapctr
@@ -57,9 +57,9 @@ typedef struct s_mlximg
 {
 	void	*ptr; //mlx_new_image
 	char	*str; //mlx_get_data_addr 
-	int		bpp; // bit per pixel
-	int		size_line; // longuer d'une ligne de fichioer fdf
-	int		endian; // most significant byte of the pixel
+	int		bpp; // bit per pixel = 32 parce que 4 x 8 definie par mlx 
+	int		size_line; // longuer d'une ligne de fichier fdf = 7680, width * UNIQ_BPP definie par mlx
+	int		endian; // little endian for now on mac-intel  val = 0
 }			t_mlximg;
 
 typedef struct s_mlx
@@ -70,13 +70,13 @@ typedef struct s_mlx
     t_mlximg img; // structure mlximg avec argument image pour le dessin de l'image
     int *colors; // pointeur sur un tableau de 256 cases de degrade de couleur
     int nbrcolors; // nombre de degrades de couleur
-    int gradient; //vecteur indiquant comment une grandeur physique varie dans l'espace, degrade de couleur
+    int gradient; // permet de choisir une gamme de couleur / vecteur indiquant comment une grandeur physique varie dans l'espace, degrade de couleur
     float scale; // valeur de l'hypothenus de height et width
     float relief; // echelle de la hauteur y
     float deg; // orientation de l'image (+45 deg)
     float deg_sin; //sinus (deg / RAD) 
     float deg_cos; // cosinus (deg / RAD)
-    float iy; // pivotement sur son axe y
+    float iy; // pivotement sur son axe y (80)
     float iy_sin; // sinus (iy / RAD)
     float iy_cos; // cosinus (iy / RAD)
 }               t_mlx;
@@ -93,9 +93,9 @@ typedef struct s_color
 typedef struct s_bresenham
 {
 	float	ratio; // rapport entre x et y
-	t_point	current; //
-	float	diff; //
-	float	i; //
+	t_point	current; // t_point s
+	float	diff; //valeur de e - s 
+	float	i; //mis a zero
 	t_color	scl; // s color
 	t_color	ecl; // e color
 }			t_bresenham;
@@ -111,6 +111,7 @@ int	fdf_set_mapsize(int fd, t_mapctr *mapctr); //
 int	fdf_set_mapsize__width(char *line); //
 int	fileoperations2(char *argv, t_mlx *data); //
 t_point	**fdf_generate_map(int fd, t_mapctr *mapctr); //
+void	fdf_map_fill_z(t_mapctr *mapctr, int fd);//
 void	fdf_free_map(t_point **map); //
 int	fdf_atoi_color(const char *str, t_mapctr *mapctr, int x, int y); //
 int	fdf_atoi_getcolor(const char *str); //
