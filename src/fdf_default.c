@@ -60,9 +60,9 @@ int	fdf_default(void *param)
 	dt->mapctr.height);
 	dt->deg = 45;
 	dt->iy = 80;
-	dt->mapctr.translatex = 0;
-	dt->mapctr.translatey = 0;
-	dt->relief = hypotf(dt->mapctr.width, dt->mapctr.width) / 15;
+	dt->mapctr.translatex = 0;//decalage en x
+	dt->mapctr.translatey = 0; //decalage en y
+	dt->relief = hypotf(dt->mapctr.width, dt->mapctr.width) / 15; 
 	fdf_map_to_screen(dt);
 	return (1);
 }

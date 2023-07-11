@@ -16,7 +16,7 @@ static void	fdf_colorset_screen(t_mlx *data)
 			fdf_put_pixel(data, data->colors[x], data->img.str \
 	+ ((long)(y + 25)*(long)data->img.size_line) \
 	+ ((long)(FDF_WIDTH - 255 + x - 35)*(long)(data->img.bpp / 8)));
-			y++;
+			y++; //255 + x - 35 mais biensur
 		}
 		x++;
 	}

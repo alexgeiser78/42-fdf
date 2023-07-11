@@ -2,8 +2,8 @@
 
 int	fdf_set_mapsize__width(char *line)
 {
-	int		line_width;
-	size_t	i;
+	int		line_width; //compteur de chiffres
+	int	i; //compteur de character
 
 	line_width = 0;
 	i = 0;
@@ -40,15 +40,23 @@ int	fdf_set_mapsize(int fd, t_mapctr *mapctr)
 
 	mapctr->width = 0; // largeur de la map fdf
 	mapctr->height = 0; // hauteur de la map fdf
+	printf(" init mapctr->width= %d\n", mapctr->width);//
+	printf(" init mapctr->height = %d\n", mapctr->height);//
+	printf("-entering while (1) loop to count mapsize-\n");//
 	while (1)
 	{
 		line = get_next_line(fd); //dans le pointeur line on stocke une ligne gnl
+		printf("line = %s", line);//
 		if (!line)
-			break ; //si on arrive a la fin du fichier on sort de la boucle
-		line_width = fdf_set_mapsize__width(line); //taille de la map en x, compte le nombre de chiffre sur une ligne
+		{ printf("\n-end of file-\n");//
+			break ;} //si on arrive a la fin du fichier on sort de la boucle
+		line_width = fdf_set_mapsize__width(line); //taille de la map en x, compte le nombre de chiffre sur une ligne, que se passe t'il si une ligne est plus grande que les autres?
+		printf("line width = %d\n", line_width);//
 		if (line_width > mapctr->width)
 			mapctr->width = line_width; //on stocke la taille de la map en x dans la structure
-		(mapctr->height)++; //on incremente la taille de la map en y de 1 a chaue saut de ligne
+		printf("mapctr->width= %d\n", mapctr->width);//
+		(mapctr->height)++; //on incremente la taille de la map en y de 1 a chaque saut de ligne
+		printf("mapctr->height = %d\n", mapctr->height);//
 		free(line); //liberation de la memoire		
 	}
 	//close(fd); // fermeture du fichier
@@ -64,6 +72,7 @@ int	fileoperations2(char *argv, t_mlx *data)
 	fd = open(argv, O_RDONLY); //re open the file 
 	if (fd == -1)
 		ft_exit("ERROR FD OPEN");
+	printf("-file opened-\n");//
 	fdf_generate_map(fd, &(data->mapctr)); //map.c
 	close(fd);
 	if (!data->mapctr.map)
@@ -83,11 +92,16 @@ int fdf_fileoperations(char *argv, t_mlx *data, int fd)
         ft_exit("at least 1 size is 0 or less");
     data->img.ptr = mlx_new_image(data->ptr, FDF_WIDTH, FDF_HEIGHT);//image manipulation, args: connec id, wid, heigth
 																	//sorte de tampon a image
-    if (!(data->img.ptr))
+    printf("data->img.ptr = %p\n", data->img.ptr);//
+	if (!(data->img.ptr))
         ft_exit("mlx_new_image error");
     data->img.str = mlx_get_data_addr(data->img.ptr, \
     &(data->img.bpp), &(data->img.size_line), \
-    &(data->img.endian)); 
+    &(data->img.endian));
+	printf("data->img.bpp (mlx val) = %d\n", data->img.bpp);//
+	printf("data->img.size_line (mlx val)= %d\n", data->img.size_line);//
+	printf("data->img.endian (mlx val)= %d\n", data->img.endian);//
+	printf("data->img.str = %p\n", data->img.str);//
     if (!(data->img.str))
         ft_exit("mlx_get_data_addr error");
     return (fileoperations2(argv, data));

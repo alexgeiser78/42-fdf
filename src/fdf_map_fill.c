@@ -7,7 +7,7 @@ static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 	float	old_x;
 	t_point	*cur;
 
-	mapctr->xorigin = (((float)mapctr->width - 1.0) / 2) * data->scale; // probablement le cntre de rotation 
+	mapctr->xorigin = (((float)mapctr->width - 1.0) / 2) * data->scale; // probablement le centre de rotation 
 	mapctr->yorigin = (((float)mapctr->height - 1.0) / 2) * data->scale;
 	y = -1;
 	while (++y < mapctr->height)
@@ -62,3 +62,5 @@ void	fdf_map_fill(t_mlx *data)
 	fdf_map_rotation(&(data->mapctr), data);
 	fdf_map_relief(&(data->mapctr), data);
 }
+
+//qu'est-ce que viweent foutre ce putain de RAD?

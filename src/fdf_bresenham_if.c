@@ -3,11 +3,11 @@
 static int	fdf_bresenham_if_while_color(t_point s, t_point e, t_bresenham vr)
 {
 	if (s.x < e.x)
-		vr.current.color = rgb(((vr.scl.r * (1 - (vr.current.x - s.x) / \
+		vr.current.color = rgb(((vr.scl.r * (1 - (vr.current.x - s.x) / 
 	vr.diff)) + (vr.ecl.r * (((vr.current.x - s.x) / vr.diff)))), ((vr.scl.g \
 	* (1 - (vr.current.x - s.x) / vr.diff)) + (vr.ecl.g * (((vr.current.x - \
 	s.x) / vr.diff)))), ((vr.scl.b * (1 - (vr.current.x - s.x) / vr.diff)) \
-	+ (vr.ecl.b * (((vr.current.x - s.x) / vr.diff)))));
+	+ (vr.ecl.b * (((vr.current.x - s.x) / vr.diff))))); //args Red Green Blue
 	else
 		vr.current.color = rgb(((vr.scl.r * ((vr.current.x - e.x) / vr.diff)) \
 	+ (vr.ecl.r * (1 - ((vr.current.x - e.x) / vr.diff)))), ((vr.scl.g * \

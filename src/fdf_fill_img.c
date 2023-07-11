@@ -14,11 +14,11 @@ void	fdf_fill_img(t_mlx *data)
 		{
 			current = data->mapctr.map[x][y];
 			if (current.x >= 0 && current.x < FDF_WIDTH \
-					&& current.y >= 0 && current.y < FDF_HEIGHT)
+					&& current.y >= 0 && current.y < FDF_HEIGHT) //si le nombre de collones est plus petit que la taille de l'ecran
 			{
 				fdf_put_pixel(data, current.color, data->img.str + \
 						((long)(current.y)*(long)data->img.size_line) + \
-						((long)(current.x)*(long)(data->img.bpp / 8)));
+						((long)(current.x)*(long)(data->img.bpp / 8))); //possible que ca ait un rapport avec les bits vu que / 8
 			}
 			if (x > 0)
 				fdf_bresenham(data, data->mapctr.map[x - 1][y], current);

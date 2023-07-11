@@ -54,8 +54,8 @@ int	fdf_atoi_color(const char *str, t_mapctr *mapctr, int x, int y)
 		i++;
 	}
 		(mapctr->map[x][y]).color = fdf_atoi_getcolor((char *)str + i);
-	//printf("color = %d\n", (mapctr->map[x][y]).color);// quelque chose ne marche pas a ce niveau val a 0 tout le temps
-	//printf("z = %d")
+	printf("color = %d\n", (mapctr->map[x][y]).color);// quelque chose ne marche pas a ce niveau val a 0 tout le temps
+
 	return (nbr * sign);
 }
 

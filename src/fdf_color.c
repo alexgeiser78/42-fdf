@@ -18,17 +18,17 @@ t_color	rrgb(int color)
 	elem.r = 0;
 	elem.g = 0;
 	elem.b = 0;
-	while (color >= (256 * 256))
+	while (color >= (256 * 256)) //connaitre la valeur de color
 	{
 		(elem.r)++;
-		color -= (256 * 256);
+		color -= (256 * 256); 
 	}
 	while (color >= 256)
 	{
 		(elem.g)++;
 		color -= 256;
 	}
-	elem.b = color;
+	elem.b = color; // on veut une couleur en moins de 256 ce qui est assez logique
 	return (elem);
 }
 
@@ -72,4 +72,4 @@ unsigned char	blue_part(int color)
 	return (blue);
 }
 
-//les rgb part servent a filtrer les information pour n'avoir qu'une valeur en tre 0 et 255
+//les rgb part servent a filtrer les information pour n'avoir qu'une valeur entre 0 et 255

@@ -18,7 +18,7 @@ int	*fdf_colorgradient_1(t_mlx *data)
 		if (i >= 255)
 			break ;
 		color -= 0x000100; //?
-	//	color -= 0x010000; //?
+		color -= 0x010000; //?
 		i++;
 	}
 	data->nbrcolors = 255;

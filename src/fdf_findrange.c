@@ -35,6 +35,6 @@ void	fdf_findrangee(t_mapctr *mapctr)
 void	fdf_findrange(t_mapctr *mapctr)
 {
 	fdf_findrangee(mapctr);
-	if (mapctr->range == 0)
+	if (mapctr->range == 0)// a verifier pourquoi
 		mapctr->range = 1;
 }
