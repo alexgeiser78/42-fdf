@@ -46,7 +46,7 @@ typedef struct s_mapctr
 	int			height;// nombre de lignes
 	long		min; //nbr min linked to the gradient
 	long		max; //nbr max linked to the gradient
-	long		range;//  diff between max z and min z linked to gradient and color == max - min
+	long		range;//  diff between max z and min z linked to gradient and color == max - min used to calculate the indice
 	long		translatex; // decalage de l'image sur l'axe x 
 	long		translatey;// decalage de l'image sur l'axe x
 	float		xorigin;// centre de rotation probable
@@ -125,7 +125,7 @@ int	*fdf_colorgradient_4(t_mlx *data); //
 int	fdf_free_all(t_mlx *data); //
 void	fdf_colormap(t_mlx *data, int *colors); //
 long	fdf_colorgradient_indice(t_mlx *data, int x, int y); //
-int	fdf_default(void *param); //
+int	fdf_default(void *data); //
 int	fdf_map_to_screen(t_mlx *data); //
 void	fdf_map_fill(t_mlx *data); //
 //static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data); //
