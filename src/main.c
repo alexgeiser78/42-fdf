@@ -54,7 +54,7 @@ void    fdf_init(t_mlx *data)
     data->gradient = 1;// pas trouve comment le gradient peut etre superieur a 1
     data->mapctr.min = 2147483647; // mise a zero des valeurs min et max
     data->mapctr.max = -2147483648; // mise a zero des valeurs min et max
-    fdf_print_data_init(data);
+    fdf_print_data_init(data);//
     printf("-data elements reseted-\n");//
 }
 //n'empeche pas le bon fonctionnement si absent
@@ -71,12 +71,15 @@ void    fdf_creator(char *argv, int fd)
     if (fdf_fileoperations(argv, &data, fd) == 1)
     {
         data.win = mlx_new_window(data.ptr, FDF_WIDTH, FDF_HEIGHT, argv); //creer et ouvrir une fenetre
+        printf("-window created-\ndata->win = %p\n", data.win);//
         data.colors = fdf_colorgradient(&data); //
         if (!(data.colors))
         {
 			fdf_free_all(&data); //if no colors we free
             ft_exit("Unattributed Color"); 
         }
+        printf("data->colors = %p\n", data.colors);//afficher le tableau de couleur
+        printf("data->nbrcolors = %d\n", data.nbrcolors);//
         fdf_colormap(&data, data.colors);
         fdf_default(&data);
         fdf_print_me_all(&data, &data.mapctr);//

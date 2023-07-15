@@ -66,7 +66,7 @@ t_point	**fdf_generate_map(int fd, t_mapctr *mapctr)
 	printf("-calloc stored on mapctr->map-\n");//
 	printf("mapctr->map = %p\n", mapctr->map);//
 	fdf_map_fill_z(mapctr, fd); //axe z
-	fdf_findrange(mapctr); //?
+	fdf_findrange(mapctr); // a quoi ca sert ?
 	return (map);
 }
 
