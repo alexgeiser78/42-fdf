@@ -31,8 +31,10 @@ static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 			printf("old_x '%f'* data->deg_sin '%f'+ cur->y '%f' * (-(data->deg_cos '%f')) == cur->y =='%f'\n", old_x, data->deg_sin, cur->y, data->deg_cos, cur->y);//
 			cur->y = cur->y * data->iy_sin + cur->y * data->iy_cos + \
 					FDF_HEIGHT / 2 + mapctr->translatey;
+			printf("cur->y '%f'* data->iy_sin '%f' + cur->y '%f'* data->iy_cos '%f'+ FDF_HEIGHT '%d'/ 2 + mapctr->translatey '%ld' == cur->y '%f'\n", cur->y, data->iy_sin, cur->y, data->iy_cos, FDF_HEIGHT, mapctr->translatey, cur->y);//
 			cur->x = cur->x * 1.41421356237 + FDF_WIDTH / 2 + \
 					mapctr->translatex; //1.41 == racine carree de 2
+			printf("cur->x '%f'* 1.41421356237 + FDF_WIDTH '%d' / 2 + mapctr->translatex '%ld' == cur->x '%f'\n", cur->x, FDF_WIDTH, mapctr->translatex, cur->x);//
 		}
 	}
 }
@@ -43,6 +45,7 @@ static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data)
 	long	y;
 	float	in_range;
 
+	printf("-entering map relief-\n");//
 	if (data->mapctr.range == 0)
 		return ;
 	y = -1;
@@ -55,8 +58,10 @@ static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data)
 				((float)mapctr->max - (float)(mapctr->map[x][y].z))) \
 					/ (float)mapctr->range) * data->relief) * \
 						((hypot(data->scale, data->scale)) / 2);
+		printf("range '%ld'- max '%ld'- (z '%f'  / range '%ld') * relief '%f' * hyp(scale '%f', scale'%f') ==  in_range = %f\n",mapctr->range, mapctr->max, mapctr->map[x][y].z, mapctr->range, data->relief, data->scale, data->scale, in_range);//
 			((mapctr->map)[x][y]).y -= in_range * (-(data->iy_cos)) \
 	+ in_range * (data->iy_sin);
+	printf("in_range '%f' * -data->iy_cos '%f' + in_range '%f' * data->iy_sin '%f' == mapctr->map)[x][y]).y '%f'\n", in_range, data->iy_cos, in_range, data->iy_sin, mapctr->map[x][y].y);//
 		}
 	}
 }
