@@ -6,7 +6,7 @@ void	fdf_fill_img(t_mlx *data)
 	int		y;
 	t_point	current;
 
-	printf("-entering fill img\n");//
+	printf("-entering fill img-\n");//
 	y = -1;
 	while (++y < data->mapctr.height)
 	{
@@ -22,10 +22,12 @@ void	fdf_fill_img(t_mlx *data)
 						((long)(current.y)*(long)data->img.size_line) + \
 						((long)(current.x)*(long)(data->img.bpp / 8))); //possible que ca ait un rapport avec les bits vu que / 8
 			}
+			printf("-entering bresenham-\n");//
 			if (x > 0)
 				fdf_bresenham(data, data->mapctr.map[x - 1][y], current);
 			if (y > 0)
 				fdf_bresenham(data, data->mapctr.map[x][y - 1], current);
 		}
 	}
+		
 }
