@@ -133,7 +133,7 @@ void	fdf_map_fill(t_mlx *data); //
 void	fdf_fill_img(t_mlx *data); //
 int	fdf_put_pixel(t_mlx *data, int color, char *pixel); //
 t_color	rrgb(int color); //
-void	fdf_bresenham(t_mlx *data, t_point s, t_point e); //
+void	fdf_bresenham(t_mlx *data, t_point s, t_point current); //
 void	fdf_bresenham_if(t_mlx *data, \
 t_point s, t_point e, float ratio); //
 //static void	fdf_bresenham_if_while(t_mlx *data, t_point s, t_point e, t_bresenham vr); //
