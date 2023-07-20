@@ -42,7 +42,10 @@ SRC_FILES = main.c \
 			fdf_bresenham.c \
 			fdf_color.c \
 			fdf_bresenham_else.c \
-			fdf_bresenham_if.c 
+			fdf_bresenham_if.c \
+			fdf_keypressed.c \
+			fdf_mouseclick.c 
+			
 
 
 
