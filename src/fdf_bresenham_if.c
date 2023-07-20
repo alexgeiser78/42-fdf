@@ -21,11 +21,11 @@ static int	fdf_bresenham_if_while_color(t_point s, t_point e, t_bresenham vr)
 static void	fdf_bresenham_if_while(t_mlx *data, \
 		t_point s, t_point e, t_bresenham vr)
 {
-	printf("-entering bresen if while-\n");//
+	//printf("-entering bresen if while-\n");//
 	while ((int)(vr.current.x + 0.5) != (int)(e.x + 0.5)) //0.5 = approximation pour savoir si il vaut mieux dessiner un pixel plutot qu'un autre
 	{
 		vr.current.color = fdf_bresenham_if_while_color(s, e, vr);
-		printf("vr.current.color = %d\n", vr.current.color);//
+		//printf("vr.current.color = %d\n", vr.current.color);//
 		if (vr.current.x < e.x)
 			vr.current.x += 1;
 		else
@@ -35,7 +35,7 @@ static void	fdf_bresenham_if_while(t_mlx *data, \
 		else
 			vr.current.y = s.y - (vr.ratio * vr.i);
 		(vr.i)++;
-		printf("vr.current.x = %f vr.current.y = %f\n", vr.current.x, vr.current.y);//
+		//printf("vr.current.x = %f vr.current.y = %f\n", vr.current.x, vr.current.y);//
 		if (vr.current.x >= 0 && vr.current.x < FDF_WIDTH \
 					&& vr.current.y >= 0 && vr.current.y < FDF_HEIGHT)
 			fdf_call_put_pixel(data, vr.current);
@@ -52,16 +52,16 @@ void	fdf_bresenham_if(t_mlx *data, \
 	|| e.y < 0 || e.y >= FDF_HEIGHT))
 		return ;
 	vr.scl = rrgb(s.color);
-	printf("vr.scl = %d\n", vr.scl.val);//
+	//printf("vr.scl = %d\n", vr.scl.val);//
 	vr.ecl = rrgb(e.color);
-	printf("vr.ecl = %d\n", vr.ecl.val);//
+	//printf("vr.ecl = %d\n", vr.ecl.val);//
 	vr.diff = fabs(e.x - s.x); // relie les point entre eux en valeur absolue
-	printf("vr.diff = %f\n", vr.diff);//
+	//printf("vr.diff = %f\n", vr.diff);//
 	vr.current = s;
-	printf("vr.current = %d\n", vr.current.color);//
+	//printf("vr.current = %d\n", vr.current.color);//
 	vr.ratio = ratio;
-	printf("vr.ratio = %f\n", vr.ratio);//
+	//printf("vr.ratio = %f\n", vr.ratio);//
 	vr.i = 0;
-	printf("vr.i = %f\n", vr.i);//
+	//printf("vr.i = %f\n", vr.i);//
 	fdf_bresenham_if_while(data, s, e, vr);
 }

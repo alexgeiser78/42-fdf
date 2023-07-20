@@ -5,6 +5,7 @@ static void	fdf_colorset_screen(t_mlx *data)
 	int	x;
 	int	y;
 
+	//printf("-entering colorset screen-");//
 	if (FDF_WIDTH < 1000 || FDF_HEIGHT < 500)
 		return ;
 	x = 0;
@@ -28,7 +29,9 @@ int	fdf_map_to_screen(t_mlx *data)
 	fdf_fill_img(data);
 	fdf_colorset_screen(data);
 	//mlx_clear_window(data->ptr, data->win); //put the window in black maybe unnecessary
+	//printf("-entering put image to window-");//
 	mlx_put_image_to_window(data->ptr, \
 			data->win, data->img.ptr, 0, 0); //dessine enfin l'image a l'ecran
+	//printf("image painted");
 	return (1);
 }

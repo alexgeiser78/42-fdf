@@ -21,6 +21,11 @@ void    fdf_print_me_all(t_mlx *data, t_mapctr *mapctr)
    printf("t_point->z = %f\n", mapctr->map[0][0].z);//derniere coordonees en z
 }
 
+static int	fdf_quit(void *param)
+{
+	exit(fdf_free_all((t_mlx *)param));
+}
+
 void fdf_print_data_init(t_mlx *data)
 {
     printf("-data elements reset-\n");//
@@ -54,35 +59,38 @@ void    fdf_init(t_mlx *data)
     data->gradient = 1;// pas trouve comment le gradient peut etre superieur a 1
     data->mapctr.min = 2147483647; // mise a zero des valeurs min et max
     data->mapctr.max = -2147483648; // mise a zero des valeurs min et max
-    fdf_print_data_init(data);//
-    printf("-data elements reseted-\n");//
+    //fdf_print_data_init(data);//
+    //printf("-data elements reseted-\n");//
 }
 //n'empeche pas le bon fonctionnement si absent
 
 void    fdf_creator(char *argv, int fd)
 {
-    printf("-entering creator-\n"); //
+    //printf("-entering creator-\n"); //
     t_mlx   data; //nom donne a la structure
-    printf("-variable 'data' created with t_mlx structure-\n");//
+    //printf("-variable 'data' created with t_mlx structure-\n");//
     fdf_init(&data); //initialise la structure
     data.ptr = mlx_init(); //initie la connection avec le serveur graphique
-    printf("server connected = data->ptr = %p\n", data.ptr);//
-    printf("-entering filoperation and mapsize-\n");//
+    //printf("server connected = data->ptr = %p\n", data.ptr);//
+    //printf("-entering filoperation and mapsize-\n");//
     if (fdf_fileoperations(argv, &data, fd) == 1)
     {
         data.win = mlx_new_window(data.ptr, FDF_WIDTH, FDF_HEIGHT, argv); //creer et ouvrir une fenetre
-        printf("-window created-\ndata->win = %p\n", data.win);//
+        //printf("-window created-\ndata->win = %p\n", data.win);//
         data.colors = fdf_colorgradient(&data); //
         if (!(data.colors))
         {
 			fdf_free_all(&data); //if no colors we free
             ft_exit("Unattributed Color"); 
         }
-        printf("data->colors = %p\n", data.colors);//afficher le tableau de couleur
-        printf("data->nbrcolors = %d\n", data.nbrcolors);//
+        //printf("data->colors = %p\n", data.colors);//afficher le tableau de couleur
+        //printf("data->nbrcolors = %d\n", data.nbrcolors);//
         fdf_colormap(&data, data.colors);
         fdf_default(&data);
-        fdf_print_me_all(&data, &data.mapctr);//
+        mlx_hook(data.win, 02, (1L << 0), fdf_keypressed, &data);
+		mlx_hook(data.win, 17, 0, fdf_quit, &data);
+		mlx_mouse_hook(data.win, fdf_mouseclick, &data);
+        //fdf_print_me_all(&data, &data.mapctr);//
     }
 
     mlx_loop(data.ptr); //gere les evenements

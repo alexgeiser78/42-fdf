@@ -11,7 +11,7 @@ long	fdf_colorgradient_indice(t_mlx *data, int x, int y)
 	max = data->mapctr.max;
 	heigth = (data->mapctr.map[x][y].z);
 	indice = ((range - (max - heigth)) * data->nbrcolors) / range; //a conprendre aec un printf
-	printf("(range:%ld - (max:%ld - height:%ld) * nbrcolors:%d) / range:%ld == indice = %ld\n", range, max, heigth, data->nbrcolors, range, indice);//
+	//printf("(range:%ld - (max:%ld - height:%ld) * nbrcolors:%d) / range:%ld == indice = %ld\n", range, max, heigth, data->nbrcolors, range, indice);//
 	return (indice);
 }
 
@@ -56,7 +56,7 @@ void	fdf_colormap(t_mlx *data, int *colors)
 			if (!(data->mapctr.map[x][y].color)) //verifier pourquoi il n'y aurait pas de color dans color
 				data->mapctr.map[x][y].color = \
 						colors[fdf_colorgradient_indice(data, x, y)]; //fonction entre crochets donc induque la position dans le tab de couleur
-			printf("data->mapctr.map[%ld][%ld].color = %d\n", x, y, data->mapctr.map[x][y].color);//
+			//printf("data->mapctr.map[%ld][%ld].color = %d\n", x, y, data->mapctr.map[x][y].color);//
 			y++;
 		}
 		x++;
