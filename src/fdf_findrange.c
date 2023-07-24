@@ -5,7 +5,7 @@ void	fdf_findrangee(t_mapctr *mapctr)
 	long	x;
 	long	y;
 	int		current;
-
+printf("-entering findrangee-\n");//
 	y = -1;
 	while (++y < mapctr->height)
 	{
@@ -37,7 +37,7 @@ void	fdf_findrangee(t_mapctr *mapctr)
 
 void	fdf_findrange(t_mapctr *mapctr)
 {
-	//printf("-entering findrange-\n");//
+	printf("-entering findrange-\n");//
 	fdf_findrangee(mapctr);
 	if (mapctr->range == 0)// a verifier pourquoi
 		mapctr->range = 1;

@@ -3,7 +3,7 @@
 int	rgb(unsigned char red, unsigned char green, unsigned char blue)
 {
 	int	color;
-
+	//printf("-rgb-\n");//
 	color = 0;
 	color += blue;
 	color += (green * 256);
@@ -14,7 +14,7 @@ int	rgb(unsigned char red, unsigned char green, unsigned char blue)
 t_color	rrgb(int color)
 {
 	t_color	elem;
-
+	//printf("-rrgb-\n");//
 	elem.r = 0;
 	elem.g = 0;
 	elem.b = 0;
@@ -35,7 +35,7 @@ t_color	rrgb(int color)
 unsigned char	red_part(int color)
 {
 	int	red;
-
+	printf("-red_part-\n");//
 	red = 0;
 	while (color >= (256 * 256))
 	{
@@ -48,7 +48,7 @@ unsigned char	red_part(int color)
 unsigned char	green_part(int color)
 {
 	int	green;
-
+	printf("-green_part-\n");//
 	while (color >= (256 * 256))
 		color -= (256 * 256);
 	green = 0;
@@ -64,6 +64,7 @@ unsigned char	blue_part(int color)
 {
 	int	blue;
 
+	printf("-blue_part-\n");//
 	while (color >= (256 * 256))
 		color -= (256 * 256);
 	while (color >= 256)

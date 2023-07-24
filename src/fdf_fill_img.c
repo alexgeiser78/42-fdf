@@ -6,7 +6,7 @@ void	fdf_fill_img(t_mlx *data)
 	int		y;
 	t_point	current;
 
-	//printf("-entering fill img-\n");//
+	printf("-entering fill img-\n");
 	y = -1;
 	while (++y < data->mapctr.height)
 	{

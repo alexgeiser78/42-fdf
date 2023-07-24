@@ -2,6 +2,7 @@
 
 void	fdf_clear_img(t_mlx *data)
 {
+	printf("-clear_img-\n");//
 	if (data->img.ptr)
 		mlx_destroy_image(data->ptr, data->img.ptr); //permet d'effacer l'image
 	data->img.ptr = mlx_new_image(data->ptr, \

@@ -14,6 +14,7 @@ void	fdf_bresenham(t_mlx *data, t_point s, t_point current) //s? e?
 	float	yrange;
 	float	ratio;
 		
+	//printf("-bresenham\n");//
 	xrange = current.x - s.x; //calcul d'une moyenne sur l'axe x
 	//printf("xrange '%f' = current.x '%f'- s.x '%f'\n", xrange, current.x, s.x);// ne se passe rien
 	if (xrange < 0) //si resultat negatif

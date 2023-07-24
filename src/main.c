@@ -1,16 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/19 16:06:02 by ageiser           #+#    #+#             */
-/*   Updated: 2023/05/19 16:06:08 by ageiser          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
- 
 #include "../include/fdf.h"
 
 void    fdf_print_me_all(t_mlx *data, t_mapctr *mapctr)
@@ -50,6 +37,7 @@ void fdf_print_data_init(t_mlx *data)
 }
 void    fdf_init(t_mlx *data)
 {
+    printf("-fdf_init-\n");//
     data->ptr = NULL; // pour connection au serveur
     data->win = NULL; // pour la fenetre
     data->mapctr.map = NULL;// map x y

@@ -2,6 +2,7 @@
 
 static int	fdf_rotate(int key, t_mlx *data)
 {
+	printf("-rotate-\n");//
 	fdf_clear_img(data);
 	if (key == KV_RIGHTARROW || key == KV_RIGHTARROW_M)
 		(data->deg) += 1.5;
@@ -13,6 +14,7 @@ static int	fdf_rotate(int key, t_mlx *data)
 
 static int	fdf_translate(int key, t_mlx *data)
 {
+	printf("-entering translate-\n");//
 	fdf_clear_img(data);
 	if (key == KV_W || key == KV_W_M)
 		(data->mapctr.translatey) -= (data->scale / 5);
@@ -28,6 +30,7 @@ static int	fdf_translate(int key, t_mlx *data)
 
 static int	fdf_incline(int key, t_mlx *data)
 {
+	printf("-entering incline-\n");//
 	fdf_clear_img(data);
 	if (key == KV_TOPARROW || key == KV_TOPARROW_M)
 			(data->iy) += 5;
@@ -41,6 +44,7 @@ static int	fdf_incline(int key, t_mlx *data)
 
 static int	fdf_relief(int key, t_mlx *data)
 {
+	printf("-entering relief-\n");//
 	fdf_clear_img(data);
 	if (key == KV_PLUS || key == KV_PLUS_M || key == KV_PLUS2)
 		data->relief += 0.25;
@@ -55,7 +59,7 @@ static int	fdf_relief(int key, t_mlx *data)
 int	fdf_keypressed(int key, void *param)
 {
 	t_mlx	*data;
-
+	printf("-entering keypressed-\n");//
 	data = (t_mlx *)param;
 	if (key == KV_LEFTARROW || key == KV_LEFTARROW_M
 		|| key == KV_RIGHTARROW || key == KV_RIGHTARROW_M)

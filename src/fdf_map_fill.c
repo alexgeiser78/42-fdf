@@ -7,7 +7,7 @@ static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 	float	old_x;
 	t_point	*cur;
 
-	//printf("-entering map rotation-\n");//
+	printf("-entering map rotation-\n");//
 	mapctr->xorigin = (((float)mapctr->width - 1.0) / 2) * data->scale; // probablement le centre de rotation 
 	//printf("mapctr->xorigin = ((mapctr->width '%d' - 1.0) / 2) * data->scale '%f'= %f\n", mapctr->width, data->scale, mapctr->xorigin);//
 	mapctr->yorigin = (((float)mapctr->height - 1.0) / 2) * data->scale;
@@ -45,7 +45,7 @@ static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data)
 	long	y;
 	float	in_range;
 
-	//printf("-entering map relief-\n");//
+	printf("-entering map relief-\n");//
 	if (data->mapctr.range == 0)
 		return ;
 	y = -1;
@@ -68,7 +68,7 @@ static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data)
 
 void	fdf_map_fill(t_mlx *data)
 {
-	//printf("-entering map-fill function-\n");//
+	printf("-entering map-fill function-\n");//
 	data->deg_sin = sin(data->deg / RAD);
 	//printf("data->deg_sin = sin(data->deg / RAD) == %f\n", data->deg_sin);//
 	data->deg_cos = cos(data->deg / RAD);

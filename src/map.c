@@ -8,7 +8,7 @@ void	fdf_map_fill_z(t_mapctr *mapctr, int fd)
 	char	*line;
 
 	y = -1;
-	//printf("-reload the file-\n");//
+	printf("-map_fill_z-\n");//
 	while (++y < mapctr->height)
 	{
 		line = get_next_line(fd);
@@ -35,6 +35,7 @@ void	fdf_map_fill_z(t_mapctr *mapctr, int fd)
 
 t_point	**fdf_generate_map(int fd, t_mapctr *mapctr)
 {
+	printf("-generate map-");
 	t_point		**map; //pointeur 2D pour stocker les axes x et y
 	long		i;
 
@@ -54,14 +55,14 @@ t_point	**fdf_generate_map(int fd, t_mapctr *mapctr)
 		i++;
 	}
 	//printf("-calloc size of t_point struct * mapctr->height + 1 created for y axe-\n");//
-	//
+	/*
 	i = 0;//
 	while(map[i])//
 	{//
 		printf("case %ld = %p\n", i, map[i]);//
 		i++;//
 	}
-	//
+	*/
 	mapctr->map = map; // map 2D
 	//printf("-calloc stored on mapctr->map-\n");//
 	//printf("mapctr->map = %p\n", mapctr->map);//

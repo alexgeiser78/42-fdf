@@ -2,6 +2,7 @@
 
 static int	fdf_rotate(int key, t_mlx *data)
 {
+	printf("-entering rotate-\n");//
 	fdf_clear_img(data);
 	if (key == KV_SCROLLLEFT)
 		(data->deg)++;
@@ -13,6 +14,7 @@ static int	fdf_rotate(int key, t_mlx *data)
 
 static int	fdf_zoom(int key, t_mlx *data)
 {
+	printf("-entering zoom-\n");//
 	fdf_clear_img(data);
 	if ((key == KV_SCROLLUP) && data->scale < (FDF_WIDTH / 2))
 		(data->scale) *= 1.05;
@@ -25,7 +27,7 @@ static int	fdf_zoom(int key, t_mlx *data)
 int	fdf_mouseclick(int key, int x, int y, void *param)
 {
 	t_mlx	*data;
-
+	printf("-entering mouseclick-\n");//
 	(void)x;
 	(void)y;
 	data = (t_mlx *)param;

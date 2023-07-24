@@ -2,6 +2,7 @@
 
 int	fdf_parallel(t_mlx *dt)
 {
+	printf("-parallel-\n");//
 	fdf_clear_img(dt);
 	if (FDF_WIDTH <= FDF_HEIGHT && dt->mapctr.width > dt->mapctr.height)
 		dt->scale = FDF_WIDTH / hypotf(dt->mapctr.width, dt->mapctr.width);
@@ -22,6 +23,7 @@ int	fdf_parallel(t_mlx *dt)
 
 int	fdf_flat(t_mlx *dt)
 {
+	printf("-flat-\n");//
 	fdf_clear_img(dt);
 	if (FDF_WIDTH <= FDF_HEIGHT && dt->mapctr.width > dt->mapctr.height)
 		dt->scale = FDF_WIDTH / hypotf(dt->mapctr.width, dt->mapctr.width);
@@ -44,7 +46,7 @@ int	fdf_default(void *data)
 {
 	t_mlx	*dt;
 	dt = (t_mlx *)data;
-	//printf("-entering default function-\n");//
+	printf("-entering default function-\n");//
 	//fdf_clear_img(dt); necessaire ou pas?
 	if (FDF_WIDTH <= FDF_HEIGHT && dt->mapctr.width > dt->mapctr.height)
 		{
@@ -90,6 +92,7 @@ int	fdf_default(void *data)
 
 int	fdf_changecolor(t_mlx *dt)
 {
+	printf("-changecolor-\n");//
 	if (dt->colors)
 		free(dt->colors);
 	else

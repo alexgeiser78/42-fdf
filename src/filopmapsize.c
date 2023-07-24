@@ -1,10 +1,11 @@
 #include "../include/fdf.h"
 
-int	fdf_set_mapsize__width(char *line)
+int	fdf_set_mapsize_width(char *line)
 {
 	int		line_width; //compteur de chiffres
 	int	i; //compteur de character
 
+	printf("-mapsize width-\n");//
 	line_width = 0;
 	i = 0;
 	while (line[i])
@@ -37,7 +38,7 @@ int	fdf_set_mapsize(int fd, t_mapctr *mapctr)
 {
 	char	*line;
 	int		line_width;
-
+	printf("-mapsize-\n");//
 	mapctr->width = 0; // largeur de la map fdf
 	mapctr->height = 0; // hauteur de la map fdf
 	//printf(" init mapctr->width= %d\n", mapctr->width);//
@@ -50,7 +51,7 @@ int	fdf_set_mapsize(int fd, t_mapctr *mapctr)
 		if (!line)
 		{ //printf("\n-end of file-\n");//
 			break ;} //si on arrive a la fin du fichier on sort de la boucle
-		line_width = fdf_set_mapsize__width(line); //taille de la map en x, compte le nombre de chiffre sur une ligne, que se passe t'il si une ligne est plus grande que les autres?
+		line_width = fdf_set_mapsize_width(line); //taille de la map en x, compte le nombre de chiffre sur une ligne, que se passe t'il si une ligne est plus grande que les autres?
 		//printf("line width = %d\n", line_width);//
 		if (line_width > mapctr->width)
 			mapctr->width = line_width; //on stocke la taille de la map en x dans la structure
@@ -68,7 +69,7 @@ int	fdf_set_mapsize(int fd, t_mapctr *mapctr)
 int	fileoperations2(char *argv, t_mlx *data)
 {
 	int	fd;
-
+	printf("-filop2-\n");//
 	fd = open(argv, O_RDONLY); //re open the file 
 	if (fd == -1)
 		ft_exit("ERROR FD OPEN");
@@ -88,6 +89,7 @@ int fdf_fileoperations(char *argv, t_mlx *data, int fd)
 //    fd = open(argv, O_RDONLY);
 //    if (fd == -1)
 //        ft_exit_no_file(argv);
+	printf("-filop-\n");//
     if (fdf_set_mapsize(fd , &(data->mapctr)) != 1) //taille de la map
         ft_exit("at least 1 size is 0 or less");
     data->img.ptr = mlx_new_image(data->ptr, FDF_WIDTH, FDF_HEIGHT);//image manipulation, args: connec id, wid, heigth
@@ -112,7 +114,3 @@ int fdf_fileoperations(char *argv, t_mlx *data, int fd)
 //img.bpp = bits per pixel, 
 //img.size_line = size of a line of the image in bytes, 
 //img.endian = endian, most significant bit at the smallest address
-
-
-
-

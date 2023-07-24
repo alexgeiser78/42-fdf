@@ -1,7 +1,8 @@
 #include "../include/fdf.h"
 
 static int	fdf_bresenham_if_while_color(t_point s, t_point e, t_bresenham vr)
-{
+{	
+	//printf("-bresenham_if_while_color\n");//
 	if (s.x < e.x)
 		vr.current.color = rgb(((vr.scl.r * (1 - (vr.current.x - s.x) / 
 	vr.diff)) + (vr.ecl.r * (((vr.current.x - s.x) / vr.diff)))), ((vr.scl.g \
@@ -46,7 +47,7 @@ void	fdf_bresenham_if(t_mlx *data, \
 		t_point s, t_point e, float ratio)
 {
 	t_bresenham	vr;
-
+	//printf("-bresenham_if\n");//
 	if ((s.x < 0 || s.x >= FDF_WIDTH || s.y < 0 \
 	|| s.y >= FDF_HEIGHT) && (e.x < 0 || e.x >= FDF_WIDTH \
 	|| e.y < 0 || e.y >= FDF_HEIGHT))

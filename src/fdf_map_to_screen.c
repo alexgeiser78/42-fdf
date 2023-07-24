@@ -5,7 +5,7 @@ static void	fdf_colorset_screen(t_mlx *data)
 	int	x;
 	int	y;
 
-	//printf("-entering colorset screen-");//
+	printf("-entering colorset screen-");//
 	if (FDF_WIDTH < 1000 || FDF_HEIGHT < 500)
 		return ;
 	x = 0;
@@ -25,6 +25,7 @@ static void	fdf_colorset_screen(t_mlx *data)
 
 int	fdf_map_to_screen(t_mlx *data)
 {
+	printf("-entering maptoscreen-\n");//
 	fdf_map_fill(data);
 	fdf_fill_img(data);
 	fdf_colorset_screen(data);
