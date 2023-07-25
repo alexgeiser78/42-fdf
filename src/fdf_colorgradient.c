@@ -116,5 +116,5 @@ int	*fdf_colorgradient(t_mlx *data)
 		return (fdf_colorgradient_4(data));
 	else
 		data->gradient = 1;
-	return (fdf_colorgradient_1(data));
+	return (fdf_colorgradient_1(data));//permet de na pas avoir de gradient superieur a 4
 }

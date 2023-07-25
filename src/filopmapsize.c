@@ -15,14 +15,14 @@ int	fdf_set_mapsize_width(char *line)
 			line_width++;
 			while (line[i] && line[i] != ' ' && line[i] != '\n')
 				i++;
-			/*if (line[i] == '0' && line [i + 1] == 'x' && i++)                    // quoi?
+			if (line[i] == '0' && line [i + 1] == 'x' && i++)                    // quoi?
 			{
 				while (line[++i])
 					if (!((line[i] >= '0' && line[i] <= '9')
 							|| (line[i] >= 'a' && line[i] <= 'f')
 							|| (line[i] >= 'A' && line[i] <= 'F')))
 						break ;
-			} un file peut contenir directement des codes couleurs*/
+			} //un file peut contenir directement des codes couleurs
 		}
 		else
 			i++;
@@ -61,7 +61,7 @@ int	fdf_set_mapsize(int fd, t_mapctr *mapctr)
 		free(line); //liberation de la memoire		
 	}
 	//close(fd); // fermeture du fichier
-	if (mapctr->width <= 0 || mapctr->height <= 0) //is la taille de la meme est inferieur ou egale a 0
+	if (mapctr->width <= 0 || mapctr->height <= 0) //si la taille de la meme est inferieur ou egale a 0
 		return (0);
 	return (1);
 }
@@ -83,12 +83,8 @@ int	fileoperations2(char *argv, t_mlx *data)
 
 int fdf_fileoperations(char *argv, t_mlx *data, int fd)
 {
-//    int fd;
-//	fd = 0;
-    
-//    fd = open(argv, O_RDONLY);
-//    if (fd == -1)
-//        ft_exit_no_file(argv);
+    if (fd == -1)
+        ft_exit_no_file(argv);
 	printf("-filop-\n");//
     if (fdf_set_mapsize(fd , &(data->mapctr)) != 1) //taille de la map
         ft_exit("at least 1 size is 0 or less");
