@@ -8,6 +8,7 @@ int	rgb(unsigned char red, unsigned char green, unsigned char blue)
 	color += blue;
 	color += (green * 256);
 	color += (red * 256 * 256);
+	//printf("color = %d\n", color);//
 	return (color);
 }
 
@@ -15,6 +16,7 @@ t_color	rrgb(int color)
 {
 	t_color	elem;
 	//printf("-rrgb-\n");//
+	//printf("color = %d\n", color);//
 	elem.r = 0;
 	elem.g = 0;
 	elem.b = 0;
@@ -29,6 +31,7 @@ t_color	rrgb(int color)
 		color -= 256;
 	}
 	elem.b = color; // on veut une couleur en moins de 256 ce qui est assez logique
+	//printf("elem.r = %c elem.g = %c elem.b = %c\n", elem.r, elem.g, elem.b);// a faire fonctionner
 	return (elem);
 }
 

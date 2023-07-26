@@ -7,7 +7,7 @@ long	fdf_colorgradient_indice(t_mlx *data, int x, int y)
 	long	heigth;
 	long	indice;
 
-	//printf("-colorgradient_indice-\n");//
+	printf("-colorgradient_indice-\n");//
 	range = data->mapctr.range;
 	max = data->mapctr.max;
 	heigth = (data->mapctr.map[x][y].z);
@@ -21,7 +21,7 @@ void	fdf_empty_colormap(t_mlx *data, int *colors)
 	long	x;
 	long	y;
 
-	//printf("-empty_colormap-\n");//
+	printf("-empty_colormap-\n");//
 	if (!colors)
 	{
 		ft_exit("ERR_ALLOC");
@@ -45,7 +45,7 @@ void	fdf_colormap(t_mlx *data, int *colors)
 	long	x;
 	long	y;
 
-	//printf("-colormap-\n");//
+	printf("-colormap-\n");//
 	if (!colors)
 	{
 		ft_exit("Unattributed Color");

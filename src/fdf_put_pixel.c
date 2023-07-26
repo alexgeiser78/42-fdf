@@ -28,5 +28,10 @@ int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 	}
 	else
 		return (0);
+	//printf("pixel + 0 = %s\n", pixel + 0);//
+	//printf("pixel + 1 = %s\n", pixel + 1);//
+	//printf("pixel + 2 = %s\n", pixel + 2);//
+	//printf("pixel + 3 = %s\n", pixel + 3);//
+
 	return (1);
 }

@@ -6,7 +6,7 @@ int	*fdf_colorgradient_1(t_mlx *data)
 	int		*tab;
 	int		color;
 	size_t	i;
-	//printf("-colorgradient1-\n");//
+	printf("-colorgradient1-\n");//
 	tab = malloc(sizeof(int) * (255 + 1));
 	if (!tab)
 		return (NULL);
@@ -32,7 +32,7 @@ int	*fdf_colorgradient_2(t_mlx *data)
 	int		*tab;
 	int		color;
 	size_t	i;
-	//printf("-colorgradient2-\n");//
+	printf("-colorgradient2-\n");//
 	tab = malloc(sizeof(int) * (255 + 1));
 	if (!tab)
 		return (NULL);
@@ -57,7 +57,7 @@ int	*fdf_colorgradient_3(t_mlx *data)
 	int		*tab;
 	int		color;
 	size_t	i;
-	//printf("-colorgradient3-\n");//
+	printf("-colorgradient3-\n");//
 	tab = malloc(sizeof(int) * (255 + 1));
 	if (!tab)
 		return (NULL);
@@ -72,7 +72,7 @@ int	*fdf_colorgradient_3(t_mlx *data)
 		color -= 0x000100;
 		i++;
 	}
-	//printf("printf du tableau de couleur a creer\n");//
+	printf("printf du tableau de couleur a creer\n");//
 	data->nbrcolors = 255;
 	return (tab);
 }
@@ -83,7 +83,7 @@ int	*fdf_colorgradient_4(t_mlx *data)
 	int		*tab;
 	int		color;
 	size_t	i;
-	//printf("-colorgradient4-\n");//
+	printf("-colorgradient4-\n");//
 	tab = malloc(sizeof(int) * (255 + 1));
 	if (!tab)
 		return (NULL);
@@ -105,7 +105,7 @@ int	*fdf_colorgradient_4(t_mlx *data)
 
 int	*fdf_colorgradient(t_mlx *data)
 {
-	//printf("-entering colorgradient-\ndata->gradient = %d\n", data->gradient);//pourquoi toujours a 1?
+	printf("-entering colorgradient-\ndata->gradient = %d\n", data->gradient);//pourquoi toujours a 1?
 	if (data->gradient == 1)
 		return (fdf_colorgradient_1(data));
 	else if (data->gradient == 2)

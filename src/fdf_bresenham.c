@@ -8,7 +8,7 @@ void	fdf_call_put_pixel(t_mlx *data, t_point current)
 				((long)(current.x)*(long)(data->img.bpp / 8)));
 }
 
-void	fdf_bresenham(t_mlx *data, t_point s, t_point current) //s? e?
+void	fdf_bresenham(t_mlx *data, t_point s, t_point current) //s?
 {
 	float	xrange;
 	float	yrange;

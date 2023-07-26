@@ -5,7 +5,7 @@ int	fdf_atoi_getcolor(const char *str)
 	size_t	i;
 	int		color;
 
-	//printf("-atoi_getcolor-\n");//
+	printf("-atoi_getcolor-\n");//
 	i = 0;
 	if (str[i] == ',' && str[i + 1] == '0' && str[i + 2] == 'x') // on peu imaginer que les coordonnes soient separees par des virgules
 		i += 3;
@@ -37,7 +37,7 @@ int	fdf_atoi_color(const char *str, t_mapctr *mapctr, int x, int y)
 	int		sign;
 	size_t	i;
 
-	//printf("-atoi_color-\n");//
+	printf("-atoi_color-\n");//
 	nbr = 0;
 	sign = 1;
 	i = 0;

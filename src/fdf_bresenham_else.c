@@ -3,7 +3,7 @@
 static int	fdf_bresenham_else_while_color(t_point s, \
 		t_point e, t_bresenham vr)
 {
-	//printf("-bresen_else_while_color-\n");//
+	printf("-bresen_else_while_color-\n");//
 	if (s.y < e.y)
 		vr.current.color = rgb(((vr.scl.r * (1 - (vr.current.y - s.y) / \
 	vr.diff)) + (vr.ecl.r * (((vr.current.y - s.y) / vr.diff)))), ((vr.scl.g \
@@ -22,7 +22,7 @@ static int	fdf_bresenham_else_while_color(t_point s, \
 static void	fdf_bresenham_else_while(t_mlx *data, \
 		t_point s, t_point e, t_bresenham vr)
 {
-	//printf("-bresen_else_while-\n");//
+	printf("-bresen_else_while-\n");//
 	while ((int)(vr.current.y + 0.5) != (int)(e.y + 0.5))
 	{
 		vr.current.color = fdf_bresenham_else_while_color(s, e, vr);
@@ -44,7 +44,7 @@ static void	fdf_bresenham_else_while(t_mlx *data, \
 void	fdf_bresenham_else(t_mlx *data, \
 		t_point s, t_point e, float ratio)
 {	
-	//printf("-bresen_else-\n");//
+	printf("-bresen_else-\n");//
 	t_bresenham	vr;
 
 	if ((s.x < 0 || s.x >= FDF_WIDTH || s.y < 0 \
