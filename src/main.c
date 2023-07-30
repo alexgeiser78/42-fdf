@@ -29,6 +29,7 @@ void	fdf_init(t_mlx *data)
 	data->mapctr.min = 2147483647; 
 	data->mapctr.max = -2147483648; 
 }
+//reset of some data elements
 
 void	fdf_creator(char *argv, int fd)
 {
@@ -53,6 +54,9 @@ void	fdf_creator(char *argv, int fd)
 	}
 	mlx_loop(data.ptr);
 }
+//data.ptr = mlx_init(); //init the connection between 
+//the software and the screen
+//mlx_new_window generates the window where the image will be displayed
 
 int	main(int argc, char **argv)
 {
@@ -70,6 +74,10 @@ int	main(int argc, char **argv)
 }
 
 //argv check
+//open file
+//fd check
+//fdf_creator
+
 //mlx_pixel_put(mlx_ptr, win_ptr, 100, 100, 0xFFFFFF); //dessine un pixel
 
 /*void    fdf_print_me_all(t_mlx *data, t_mapctr *mapctr)
@@ -79,12 +87,8 @@ int	main(int argc, char **argv)
    printf("mapctr->height = %d\n", mapctr->height);//
    printf("t_point->z = %f\n", mapctr->map[0][0].z);//derniere coordonees en z
 }
-
-static int	fdf_quit(void *param)
-{
-	exit(fdf_free_all((t_mlx *)param));
-}
 */
+
 /*
 void fdf_print_data_init(t_mlx *data)
 {
@@ -106,9 +110,10 @@ void fdf_print_data_init(t_mlx *data)
     printf("data->iy = %f\n", data->iy);//
     printf("data->iy_sin = %f\n", data->iy_sin);//
     printf("data->iy_cos = %f\n", data->iy_cos);//
-    //printf("data->nbrcolors = %d\n", data->nbrcolors);//
+    printf("data->nbrcolors = %d\n", data->nbrcolors);//
 }
 */
+
 /*
 void    fdf_init(t_mlx *data)
 {
@@ -122,11 +127,11 @@ void    fdf_init(t_mlx *data)
     data->gradient = 1;// pas trouve comment le gradient peut etre superieur a 1
     data->mapctr.min = 2147483647; // mise a zero des valeurs min et max
     data->mapctr.max = -2147483648; // mise a zero des valeurs min et max
-    //fdf_print_data_init(data);//
-    //printf("-data elements reseted-\n");//
+    fdf_print_data_init(data);//
+    printf("-data elements reseted-\n");//
 }
 //n'empeche pas le bon fonctionnement si absent
-*/
+
 
 //void    fdf_creator(char *argv, int fd)
 //{
@@ -159,7 +164,6 @@ void    fdf_init(t_mlx *data)
 //    mlx_loop(data.ptr); //gere les evenements
 //}
 
-/*
 int main(int argc, char **argv)
 {
     int fd;

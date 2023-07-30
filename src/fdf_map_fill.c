@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_map_fill.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/30 13:07:27 by ageiser           #+#    #+#             */
+/*   Updated: 2023/07/30 13:07:28 by ageiser          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fdf.h"
 
 static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
@@ -7,11 +19,8 @@ static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 	float	old_x;
 	t_point	*cur;
 
-	printf("-entering map rotation-\n");//
-	mapctr->xorigin = (((float)mapctr->width - 1.0) / 2) * data->scale; // probablement le centre de rotation 
-	//printf("mapctr->xorigin = ((mapctr->width '%d' - 1.0) / 2) * data->scale '%f'= %f\n", mapctr->width, data->scale, mapctr->xorigin);//
+	mapctr->xorigin = (((float)mapctr->width - 1.0) / 2) * data->scale;
 	mapctr->yorigin = (((float)mapctr->height - 1.0) / 2) * data->scale;
-	//printf("mapctr->yorigin = ((mapctr->height '%d' - 1.0) / 2) * data->scale '%f'= %f\n", mapctr->height, data->scale, mapctr->yorigin);//
 	y = -1;
 	while (++y < mapctr->height)
 	{
@@ -20,21 +29,14 @@ static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 		{
 			cur = &((mapctr->map)[x][y]);
 			cur->x = x * data->scale - mapctr->xorigin;
-			//printf("cur->x = x '%ld' * data->scale '%f' - mapctr->xorigin '%f'== %f\n", x, data->scale, mapctr->xorigin, cur->x);//
 			cur->y = y * data->scale - mapctr->yorigin;
-			//printf("cur->y = y '%ld' * data->scale '%f' - mapctr->yorigin '%f'== %f\n", y, data->scale, mapctr->yorigin, cur->y);//
 			old_x = cur->x;
-			//printf("old_x = %f\n", old_x);//
 			cur->x = old_x * data->deg_cos + cur->y * (-(data->deg_sin));
-			//printf("old_x '%f'* data->deg_cos '%f'+ cur->y '%f' * (-(data->deg_sin '%f')) == cur->x =='%f'\n", old_x, data->deg_cos, cur->y, data->deg_sin, cur->x);//
 			cur->y = old_x * data->deg_sin + cur->y * data->deg_cos;
-			//printf("old_x '%f'* data->deg_sin '%f'+ cur->y '%f' * (-(data->deg_cos '%f')) == cur->y =='%f'\n", old_x, data->deg_sin, cur->y, data->deg_cos, cur->y);//
 			cur->y = cur->y * data->iy_sin + cur->y * data->iy_cos + \
 					FDF_HEIGHT / 2 + mapctr->translatey;
-			//printf("cur->y '%f'* data->iy_sin '%f' + cur->y '%f'* data->iy_cos '%f'+ FDF_HEIGHT '%d'/ 2 + mapctr->translatey '%ld' == cur->y '%f'\n", cur->y, data->iy_sin, cur->y, data->iy_cos, FDF_HEIGHT, mapctr->translatey, cur->y);//
 			cur->x = cur->x * 1.41421356237 + FDF_WIDTH / 2 + \
-					mapctr->translatex; //1.41 == racine carree de 2
-			//printf("cur->x '%f'* 1.41421356237 + FDF_WIDTH '%d' / 2 + mapctr->translatex '%ld' == cur->x '%f'\n", cur->x, FDF_WIDTH, mapctr->translatex, cur->x);//
+					mapctr->translatex;
 		}
 	}
 }
@@ -45,7 +47,6 @@ static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data)
 	long	y;
 	float	in_range;
 
-	printf("-entering map relief-\n");//
 	if (data->mapctr.range == 0)
 		return ;
 	y = -1;
@@ -58,14 +59,114 @@ static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data)
 				((float)mapctr->max - (float)(mapctr->map[x][y].z))) \
 					/ (float)mapctr->range) * data->relief) * \
 						((hypot(data->scale, data->scale)) / 2);
-		//printf("range '%ld'- max '%ld'- (z '%f'  / range '%ld') * relief '%f' * hyp(scale '%f', scale'%f') ==  in_range = %f\n",mapctr->range, mapctr->max, mapctr->map[x][y].z, mapctr->range, data->relief, data->scale, data->scale, in_range);//
 			((mapctr->map)[x][y]).y -= in_range * (-(data->iy_cos)) \
 	+ in_range * (data->iy_sin);
-	//printf("in_range '%f' * -data->iy_cos '%f' + in_range '%f' * data->iy_sin '%f' == mapctr->map)[x][y]).y '%f'\n", in_range, data->iy_cos, in_range, data->iy_sin, mapctr->map[x][y].y);//
 		}
 	}
 }
 
+void	fdf_map_fill(t_mlx *data)
+{
+	data->deg_sin = sin(data->deg / RAD);
+	data->deg_cos = cos(data->deg / RAD);
+	data->iy_sin = sin(data->iy / RAD);
+	data->iy_cos = cos(data->iy / RAD);
+	fdf_map_rotation(&(data->mapctr), data);
+	fdf_map_relief(&(data->mapctr), data);
+}
+
+//static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
+//{
+//	long	x;
+//	long	y;
+//	float	old_x;
+//	t_point	*cur;
+
+//	printf("-entering map rotation-\n");//
+//	mapctr->xorigin = (((float)mapctr->width - 1.0) / 2) * data->scale; 
+// probablement le centre de rotation 
+	//printf("mapctr->xorigin = ((mapctr->width '%d' - 1.0) / 2) *
+	//data->scale '%f'= %f\n", 
+	//mapctr->width, data->scale, mapctr->xorigin);//
+//	mapctr->yorigin = (((float)mapctr->height - 1.0) / 2) * data->scale;
+	//printf("mapctr->yorigin = ((mapctr->height '%d' - 1.0) / 2) * 
+	//data->scale '%f'= %f\n", 
+	//mapctr->height, data->scale, mapctr->yorigin);//
+//	y = -1;
+//	while (++y < mapctr->height)
+//	{
+//		x = -1;
+//		while (++x < mapctr->width)
+//		{
+//			cur = &((mapctr->map)[x][y]);
+//			cur->x = x * data->scale - mapctr->xorigin;
+			//printf("cur->x = x '%ld' * data->scale '%f' - 
+			//mapctr->xorigin '%f'== %f\n", x, 
+			//data->scale, mapctr->xorigin, cur->x);//
+//			cur->y = y * data->scale - mapctr->yorigin;
+			//printf("cur->y = y '%ld' * data->scale '%f' - 
+			//mapctr->yorigin '%f'== %f\n", y, data->scale, 
+			//mapctr->yorigin, cur->y);//
+//			old_x = cur->x;
+			//printf("old_x = %f\n", old_x);//
+//			cur->x = old_x * data->deg_cos + cur->y * (-(data->deg_sin));
+			//printf("old_x '%f'* data->deg_cos '%f'+ cur->y '%f' * 
+			//(-(data->deg_sin '%f')) == cur->x =='%f'\n", old_x, 
+			//data->deg_cos, cur->y, data->deg_sin, cur->x);//
+//			cur->y = old_x * data->deg_sin + cur->y * data->deg_cos;
+			//printf("old_x '%f'* data->deg_sin '%f'+ cur->y '%f' * 
+			//(-(data->deg_cos '%f')) == cur->y =='%f'\n", old_x, 
+			//data->deg_sin, cur->y, data->deg_cos, cur->y);//
+//			cur->y = cur->y * data->iy_sin + cur->y * data->iy_cos + 
+//					FDF_HEIGHT / 2 + mapctr->translatey;
+			//printf("cur->y '%f'* data->iy_sin '%f' + cur->y '%f'* 
+			//data->iy_cos '%f'+ FDF_HEIGHT '%d'/ 2 + 
+			//mapctr->translatey '%ld' == cur->y '%f'\n", cur->y, 
+			//data->iy_sin, cur->y, data->iy_cos, FDF_HEIGHT, 
+			//mapctr->translatey, cur->y);//
+//			cur->x = cur->x * 1.41421356237 + FDF_WIDTH / 2 + 
+//					mapctr->translatex; //1.41 == racine carree de 2
+			//printf("cur->x '%f'* 1.41421356237 + FDF_WIDTH '%d' / 2 
+			//+ mapctr->translatex '%ld' == cur->x '%f'\n", cur->x, 
+			//FDF_WIDTH, mapctr->translatex, cur->x);//
+//		}
+//	}
+//}
+
+//static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data)
+//{
+//	long	x;
+//	long	y;
+//	float	in_range;
+
+//	printf("-entering map relief-\n");//
+//	if (data->mapctr.range == 0)
+//		return ;
+//	y = -1;
+//	while (++y < mapctr->height)
+//	{
+//		x = -1;
+//		while (++x < mapctr->width)
+//		{
+//			in_range = ((((float)mapctr->range - 
+//				((float)mapctr->max - (float)(mapctr->map[x][y].z))) 
+//					/ (float)mapctr->range) * data->relief) * 
+//						((hypot(data->scale, data->scale)) / 2);
+		//printf("range '%ld'- max '%ld'- (z '%f'  / range '%ld') * 
+		//relief '%f' * hyp(scale '%f', scale'%f') ==  in_range = %f\n", 
+		//mapctr->range, mapctr->max, mapctr->map[x][y].z, mapctr->range, 
+		//data->relief, data->scale, data->scale, in_range);//
+//			((mapctr->map)[x][y]).y -= in_range * (-(data->iy_cos)) 
+//	+ in_range * (data->iy_sin);
+	//printf("in_range '%f' * -data->iy_cos '%f' + in_range '%f' * 
+	//data->iy_sin '%f' == mapctr->map)[x][y]).y '%f'\n", in_range, 
+	//data->iy_cos, in_range, data->iy_sin, mapctr->map[x][y].y);//
+//		}
+//	}
+//}
+//*/
+
+/*
 void	fdf_map_fill(t_mlx *data)
 {
 	printf("-entering map-fill function-\n");//
@@ -80,5 +181,5 @@ void	fdf_map_fill(t_mlx *data)
 	fdf_map_rotation(&(data->mapctr), data);
 	fdf_map_relief(&(data->mapctr), data);
 }
-
+*/
 //qu'est-ce que viweent foutre ce putain de RAD?
