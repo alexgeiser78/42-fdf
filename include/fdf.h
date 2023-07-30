@@ -29,6 +29,9 @@
 #  define RAD 57.2958 //1 radian = 57.2958 deg
 # endif
 
+# ifndef mapz
+#  define mapz ((mapctr->map)[x][y])
+# endif
 
 
 typedef struct s_point
