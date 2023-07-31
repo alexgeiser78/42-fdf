@@ -33,6 +33,13 @@
 #  define mapz ((mapctr->map)[x][y])
 # endif
 
+# ifndef deg_init
+#  define deg_init 45
+# endif
+
+# ifndef incl_y
+#  define incl_y 80
+# endif
 
 typedef struct s_point
 {
