@@ -20,7 +20,9 @@ static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 	t_point	*cur;
 
 	mapctr->xorigin = (((float)mapctr->width - 1.0) / 2) * data->scale;
+	printf("mapctr->xorigin = ((mapctr->width '%d' - 1.0) / 2) * data->scale '%f'= %f\n", mapctr->width, data->scale, mapctr->xorigin);//
 	mapctr->yorigin = (((float)mapctr->height - 1.0) / 2) * data->scale;
+	printf("mapctr->yorigin = ((mapctr->height '%d' - 1.0) / 2) * data->scale '%f'= %f\n", mapctr->height, data->scale, mapctr->yorigin);//
 	y = -1;
 	while (++y < mapctr->height)
 	{
@@ -29,17 +31,27 @@ static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 		{
 			cur = &((mapctr->map)[x][y]);
 			cur->x = x * data->scale - mapctr->xorigin;
+			printf("cur->x = x '%ld' * data->scale '%f' - mapctr->xorigin '%f'== %f\n", x, data->scale, mapctr->xorigin, cur->x);//
 			cur->y = y * data->scale - mapctr->yorigin;
+			printf("cur->y = y '%ld' * data->scale '%f' - mapctr->yorigin '%f'== %f\n", y, data->scale, mapctr->yorigin, cur->y);//
 			old_x = cur->x;
+			printf("old_x = %f\n", old_x);//
 			cur->x = old_x * data->deg_cos + cur->y * (-(data->deg_sin));
+			printf("old_x '%f'* data->deg_cos '%f'+ cur->y '%f' * (-(data->deg_sin '%f')) == cur->x =='%f'\n", old_x, data->deg_cos, cur->y, data->deg_sin, cur->x);//
 			cur->y = old_x * data->deg_sin + cur->y * data->deg_cos;
+			printf("old_x '%f'* data->deg_sin '%f'+ cur->y '%f' * (-(data->deg_cos '%f')) == cur->y =='%f'\n", old_x, data->deg_sin, cur->y, data->deg_cos, cur->y);//
 			cur->y = cur->y * data->iy_sin + cur->y * data->iy_cos + \
 					FDF_HEIGHT / 2 + mapctr->translatey;
+					printf("cur->y '%f'* data->iy_sin '%f' + cur->y '%f'* data->iy_cos '%f'+ FDF_HEIGHT '%d'/ 2 + mapctr->translatey '%ld' == cur->y '%f'\n", cur->y, data->iy_sin, cur->y, data->iy_cos, FDF_HEIGHT, mapctr->translatey, cur->y);//
 			cur->x = cur->x * 1.41421356237 + FDF_WIDTH / 2 + \
 					mapctr->translatex;
+			printf("cur->x '%f'* 1.41421356237 + FDF_WIDTH '%d' / 2 + mapctr->translatex '%ld' == cur->x '%f'\n", cur->x, FDF_WIDTH, mapctr->translatex, cur->x);//
 		}
 	}
 }
+//calc of the center of rotation
+//copy of the map into *cur
+
 
 static void	fdf_map_relief(t_mapctr *mapctr, t_mlx *data)
 {
@@ -74,6 +86,11 @@ void	fdf_map_fill(t_mlx *data)
 	fdf_map_rotation(&(data->mapctr), data);
 	fdf_map_relief(&(data->mapctr), data);
 }
+//Radian is the angle made by the size of the radius and the circular length of this size
+//the value of RAD is 57.295779513082320876798154814105
+//integral math used to calculate the size between two points
+//when deg or iy changes, those angles are recalculated
+
 
 //static void	fdf_map_rotation(t_mapctr *mapctr, t_mlx *data)
 //{

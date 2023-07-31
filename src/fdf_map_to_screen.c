@@ -43,6 +43,9 @@ int	fdf_map_to_screen(t_mlx *data)
 			data->win, data->img.ptr, 0, 0);
 	return (1);
 }
+//beginning of the modified part when an event is done
+
+
 
 //static void	fdf_colorset_screen(t_mlx *data)
 //{
