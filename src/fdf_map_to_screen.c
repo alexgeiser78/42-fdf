@@ -45,8 +45,6 @@ int	fdf_map_to_screen(t_mlx *data)
 }
 //beginning of the modified part when an event is done
 
-
-
 //static void	fdf_colorset_screen(t_mlx *data)
 //{
 //	int	x;
