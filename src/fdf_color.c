@@ -22,6 +22,7 @@ int	rgb(unsigned char red, unsigned char green, unsigned char blue)
 	color += (red * 256 * 256);
 	return (color);
 }
+//int adding all rgb values to get a color value
 
 t_color	rrgb(int color)
 {
@@ -43,6 +44,7 @@ t_color	rrgb(int color)
 	elem.b = color;
 	return (elem);
 }
+//reverse rgb invert the process of rgb
 
 unsigned char	red_part(int color)
 {

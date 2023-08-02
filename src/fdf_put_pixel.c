@@ -39,6 +39,23 @@ int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 		return (0);
 	return (1);
 }
+//*pixel is a pointer to the memory where the pixel color 
+//information is stored
+//endian 1 for MacOs
+//pixel + 0 = alpha 
+//4 bits pers pixel
+
+/*unsigned char r, g, b, a;
+
+    // Access the color components in the pixel memory location
+    b = *(pixel + 0); // Blue component
+	g = *(pixel + 1); // Green component
+    r = *(pixel + 2); // Red component
+    a = *(pixel + 3); // Alpha component
+   
+
+    // Print the color component values
+    printf("Alpha: %u, Red: %u, Green: %u, Blue: %u\n", a, r, g, b);*/
 
 //int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 //{
