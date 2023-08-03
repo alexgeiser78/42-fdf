@@ -106,8 +106,8 @@ typedef struct s_bresenham
 	t_point	current; // t_point s
 	float	diff; //valeur de e - s 
 	float	i; //compteur
-	t_color	scl; // s color
-	t_color	ecl; // e color
+	t_color	bcol; // base color
+	t_color	ccol; // current color
 }			t_bresenham;
 
 void fdf_creator(char *argv, int fd); //
@@ -143,11 +143,11 @@ void	fdf_map_fill(t_mlx *data); //
 void	fdf_fill_img(t_mlx *data); //
 int	fdf_put_pixel(t_mlx *data, int color, char *pixel); //
 t_color	rrgb(int color); //
-void	fdf_bresenham(t_mlx *data, t_point s, t_point current); //
+void	fdf_bresenham(t_mlx *data, t_point base, t_point current); //
 void	fdf_bresenham_if(t_mlx *data, \
-t_point s, t_point e, float ratio); //
-//static void	fdf_bresenham_if_while(t_mlx *data, t_point s, t_point e, t_bresenham vr); //
-//static int	fdf_bresenham_if_while_color(t_point s, t_point e, t_bresenham vr); //
+t_point base, t_point current, float ratio); //
+//static void	fdf_bresenham_if_while(t_mlx *data, t_point base, t_point current, t_bresenham vr); //
+//static int	fdf_bresenham_if_while_color(t_point base, t_point current, t_bresenham vr); //
 int	rgb(unsigned char red, unsigned char green, unsigned char blue); //
 void	fdf_call_put_pixel(t_mlx *data, t_point current); //
 void	fdf_bresenham_else(t_mlx *data, t_point s, t_point e, float ratio); //
