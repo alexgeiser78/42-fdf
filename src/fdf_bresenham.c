@@ -19,29 +19,31 @@ void	fdf_call_put_pixel(t_mlx *data, t_point current)
 				((long)(current.x)*(long)(data->img.bpp / 8)));
 }
 
-void	fdf_bresenham(t_mlx *data, t_point s, t_point current)
+void	fdf_bresenham(t_mlx *data, t_point base, t_point current)
 {
 	float	xrange;
 	float	yrange;
 	float	ratio;
 
-	xrange = current.x - s.x;
+	xrange = current.x - base.x;
 	if (xrange < 0)
 		xrange = xrange * -1;
-	yrange = current.y - s.y;
+	yrange = current.y - base.y;
 	if (yrange < 0)
 		yrange = yrange * -1;
 	if (xrange > yrange)
 	{
 		ratio = yrange / xrange;
-		fdf_bresenham_if(data, s, current, ratio);
+		fdf_bresenham_if(data, base, current, ratio);
 	}
 	else
 	{
 		ratio = xrange / yrange;
-		fdf_bresenham_else(data, s, current, ratio);
+		fdf_bresenham_else(data, base, current, ratio);
 	}
 }
+//calc the ratio between current and base to dispatch to
+//if or else
 
 //void	fdf_call_put_pixel(t_mlx *data, t_point current)
 //{

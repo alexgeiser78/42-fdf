@@ -12,37 +12,37 @@
 
 #include "../include/fdf.h"
 
-static int	fdf_bresenham_if_while_color(t_point s, t_point e, t_bresenham vr)
+static int	fdf_bresenham_if_while_color(t_point base, t_point current, t_bresenham vr)
 {
-	if (s.x < e.x)
-		vr.current.color = rgb(((vr.scl.r * (1 - (vr.current.x - s.x) / \
-	vr.diff)) + (vr.ecl.r * (((vr.current.x - s.x) / vr.diff)))), ((vr.scl.g \
-	* (1 - (vr.current.x - s.x) / vr.diff)) + (vr.ecl.g * (((vr.current.x - \
-	s.x) / vr.diff)))), ((vr.scl.b * (1 - (vr.current.x - s.x) / vr.diff)) \
-	+ (vr.ecl.b * (((vr.current.x - s.x) / vr.diff)))));
+	if (base.x < current.x)
+		vr.current.color = rgb(((vr.bcol.r * (1 - (vr.current.x - base.x) / \
+	vr.diff)) + (vr.ccol.r * (((vr.current.x - base.x) / vr.diff)))), ((vr.bcol.g \
+	* (1 - (vr.current.x - base.x) / vr.diff)) + (vr.ccol.g * (((vr.current.x - \
+	base.x) / vr.diff)))), ((vr.bcol.b * (1 - (vr.current.x - base.x) / vr.diff)) \
+	+ (vr.ccol.b * (((vr.current.x - base.x) / vr.diff)))));
 	else
-		vr.current.color = rgb(((vr.scl.r * ((vr.current.x - e.x) / vr.diff)) \
-	+ (vr.ecl.r * (1 - ((vr.current.x - e.x) / vr.diff)))), ((vr.scl.g * \
-	((vr.current.x - e.x) / vr.diff)) + (vr.ecl.g * (1 - ((vr.current.x - \
-	e.x) / vr.diff)))), ((vr.scl.b * ((vr.current.x - e.x) / vr.diff)) + \
-	(vr.ecl.b * (1 - ((vr.current.x - e.x) / vr.diff)))));
+		vr.current.color = rgb(((vr.bcol.r * ((vr.current.x - current.x) / vr.diff)) \
+	+ (vr.ccol.r * (1 - ((vr.current.x - current.x) / vr.diff)))), ((vr.bcol.g * \
+	((vr.current.x - current.x) / vr.diff)) + (vr.ccol.g * (1 - ((vr.current.x - \
+	current.x) / vr.diff)))), ((vr.bcol.b * ((vr.current.x - current.x) / vr.diff)) + \
+	(vr.ccol.b * (1 - ((vr.current.x - current.x) / vr.diff)))));
 	return (vr.current.color);
 }
 
 static void	fdf_bresenham_if_while(t_mlx *data, \
-		t_point s, t_point e, t_bresenham vr)
+		t_point base, t_point current, t_bresenham vr)
 {
-	while ((int)(vr.current.x + 0.5) != (int)(e.x + 0.5))
+	while ((int)(vr.current.x + 0.5) != (int)(current.x + 0.5))
 	{
-		vr.current.color = fdf_bresenham_if_while_color(s, e, vr);
-		if (vr.current.x < e.x)
+		vr.current.color = fdf_bresenham_if_while_color(base, current, vr);
+		if (vr.current.x < current.x)
 			vr.current.x += 1;
 		else
 			vr.current.x -= 1;
-		if (vr.current.y < e.y)
-			vr.current.y = s.y + (vr.ratio * vr.i);
+		if (vr.current.y < current.y)
+			vr.current.y = base.y + (vr.ratio * vr.i);
 		else
-			vr.current.y = s.y - (vr.ratio * vr.i);
+			vr.current.y = base.y - (vr.ratio * vr.i);
 		(vr.i)++;
 		if (vr.current.x >= 0 && vr.current.x < FDF_WIDTH \
 					&& vr.current.y >= 0 && vr.current.y < FDF_HEIGHT)
@@ -51,22 +51,23 @@ static void	fdf_bresenham_if_while(t_mlx *data, \
 }
 
 void	fdf_bresenham_if(t_mlx *data, \
-		t_point s, t_point e, float ratio)
+		t_point base, t_point current, float ratio)
 {
 	t_bresenham	vr;
 
-	if ((s.x < 0 || s.x >= FDF_WIDTH || s.y < 0 \
-	|| s.y >= FDF_HEIGHT) && (e.x < 0 || e.x >= FDF_WIDTH \
-	|| e.y < 0 || e.y >= FDF_HEIGHT))
+	if ((base.x < 0 || base.x >= FDF_WIDTH || base.y < 0 \
+	|| base.y >= FDF_HEIGHT) && (current.x < 0 || current.x >= FDF_WIDTH \
+	|| current.y < 0 || current.y >= FDF_HEIGHT))
 		return ;
-	vr.scl = rrgb(s.color);
-	vr.ecl = rrgb(e.color);
-	vr.diff = fabs(e.x - s.x);
-	vr.current = s;
+	vr.bcol = rrgb(base.color);
+	vr.ccol = rrgb(current.color);
+	vr.diff = fabs(current.x - base.x);
+	vr.current = base;
 	vr.ratio = ratio;
 	vr.i = 0;
-	fdf_bresenham_if_while(data, s, e, vr);
+	fdf_bresenham_if_while(data, base, current, vr);
 }
+//vr created with t_bresenham struct
 
 //static int	fdf_bresenham_if_while_color
 //(t_point s, t_point e, t_bresenham vr)

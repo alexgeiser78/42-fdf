@@ -44,6 +44,7 @@ int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 //endian 1 for MacOs
 //pixel + 0 = alpha 
 //4 bits pers pixel
+//endian 0 on MACOS
 
 /*unsigned char r, g, b, a;
 
@@ -56,6 +57,9 @@ int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 
     // Print the color component values
     printf("Alpha: %u, Red: %u, Green: %u, Blue: %u\n", a, r, g, b);*/
+
+//	unsigned char q = *pixel;
+//	printf("%u", q);
 
 //int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 //{
