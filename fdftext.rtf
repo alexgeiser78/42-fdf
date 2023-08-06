@@ -1,0 +1,274 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;\red33\green255\blue6;\red0\green0\blue0;
+\red193\green193\blue193;}
+{\*\expandedcolortbl;;\csgray\c0\c0;\cssrgb\c0\c97680\c0;\cssrgb\c0\c0\c0;
+\cssrgb\c80000\c80000\c80000;}
+\margl1440\margr1440\vieww25320\viewh19400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 I pixel = 4 bytes\
+Utiliser une suite de byte\
+-affficher \'e9cran noir\
+-faire que le clavier agisse sur cet \'e9cran\
+Essayer de cr\'e9er un cube et de le faire roter(bonus)\
+GitHub ailopez-o\
+Matrices de rotation wikipedia\
+Deplacer le centre de rotation au centre de la forme \
+\
+Leaks \'97atExit \'97./fdf\
+\
+\
+Flag de compile :\
+-lmlx -framework OpendGL -framework AppKit\
+\
+gcc -L ./minilibx_macos main.c -lmlx -framework OpenGL -framework AppKit\
+\
+mlx_pixel_put is very slow and doesn\'92t wait for the whole image to print in one fois\
+\
+La division par 8 est un moyen de caler les bits en octet\
+\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx13554\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0 Deroulement:\
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9260\tx12675\pardirnatural\partightenfactor0
+\cf0 main         												main.c	if argv ok, and open ok, then fdf_creator\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9260\pardirnatural\partightenfactor0
+\cf0     |-> ft_exit											error.c\
+    |-> open\
+    |-> ft_exit_no_file										error.c\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9245\tx12673\pardirnatural\partightenfactor0
+\cf0     |->	     fdf_creator										main.c	\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9243\tx12664\pardirnatural\partightenfactor0
+\cf0                    |->       fdf_init									main.c	initialisation de certain arguments\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9247\tx12649\pardirnatural\partightenfactor0
+\cf0 		  |->       mlx_init   								minilibx	initialisation de la connection au serveur\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9227\tx12646\pardirnatural\partightenfactor0
+\cf0                    |->       fdf_fileoperations           					filopmapsize.c	traitement de la file de la map\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9222\tx12671\pardirnatural\partightenfactor0
+\cf0                                     |->     fdf_set_mapsize					filopmapsize.c	mesure de la taille de la map\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9223\tx12649\pardirnatural\partightenfactor0
+\cf0                                                        |-> gnl						gnl	stocke dans un pointeur, une ligne apr\'e8s l\'92autre\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9195\tx12643\pardirnatural\partightenfactor0
+\cf0 						    |-> fdf_set_mapsize_width     		filopmapsize.c	calcul de la largeur de la map en comptant le nombre de points\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0        						    |-> free\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9177\pardirnatural\partightenfactor0
+\cf0 				  |->     ft_exit							error.c\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9209\tx12635\pardirnatural\partightenfactor0
+\cf0                                     |->     mlx_new_image                               	minilibx	storms am new image in memory\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9207\tx12630\pardirnatural\partightenfactor0
+\cf0 				  |->     mlx_get_data_addr 				minilibx	param, bpp, image length, image endian les 3 passage par reference\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9207\pardirnatural\partightenfactor0
+\cf0 				  |->     ft_exit							error.c\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9218\pardirnatural\partightenfactor0
+\cf0 				  |->     fdf_fileoperations2					filopmapsize.c\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+\cf0     						    |-> open \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9206\pardirnatural\partightenfactor0
+\cf0 						    |->ft_exit					error.c\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9207\pardirnatural\partightenfactor0
+\cf0 						    |-> fdf_generate_map       		map.c.                                         callocs des axes x et y dans le double pointeur **map\
+							       	|-> ft_calloc\
+								|-> fdf_free_map		fdf_free_all.c\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9196\pardirnatural\partightenfactor0
+\cf0 								|-> fdf_map_fill_z 		map.c                                          stock la valeur de z dans le param z               \
+									|-> gnl\
+									|-> fdf_atoi_color	fdf_atoi.c                                     atoi standard\
+										|-> fdf_atoi_getcolor	fdf_atoi_get_color.c.                   \cb2 permet de g\'e9rer les maps qui ont deja un code couleur en hexadec pour transformer cette couleur en int\cb1 \
+									|-> free\
+								|-> fdf_findrange		fdf_findrange.c.                          si la diff est de 0 on a met a 1\
+									   |-> fdf_findrangee	fdf_findrange.c.                          rempli le champ max et min avec les valeurs z et range, la diff entre les deux\
+					             |-> close\
+						     |-> ft_exit					error.c\
+\
+		   |-> mlx_new_window							minilibx                                       taille de la fen\'eatre a ouvrir         \
+		   |-> fdf_colorgradient							fdf_colorgradient.c.                    choix de gamme de couleur\
+				|-> fdf_colorgradient1					fdf_colorgradient.c                     blanc-bleu\
+				|-> fdf_colorgradient2					fdf_colorgradient.c                     jaune-rouge\
+				|-> fdf_colorgradient3					fdf_colorgradient.c                     bleu-violet\
+				|-> fdf_colorgradient4					fdf_colorgradient.c                     jaune-violet\
+		   |-> fdf_free_all								fdf_free_all.c\
+				|-> mlx_destroy_window					minilibx                                      free the window\
+				|-> mlx_destroy_image					minilibx                                      free the image\
+				|-> fdf_free_map						fdf_free_all.c.                            free the malloc form the map\
+		   |-> ft_exit									error.c\
+		   |-> fdf_colormap								fdf_colormap.c                           here we put the value color which is calculated by colorgradient indice\
+				|-> ft_exit								error.c\
+				|-> fdf_colorgradient_indice				fdf_colormap.c                          \cb2 need a printf to understand\cb1 \
+		   |-> fdf_default									fdf_default.c                              \cb2 devolved to scale arg which is hypotenuse of FDF_WIDTH or HEIGTH / hyp(height and width)\cb1 \
+				|-> fdf_map_to_screen					fdf_map_to_screen.c                functions dispatcher.    \cb3 Partie de reprint lors d\'92un evenemen\cb1 t \
+						|-> fdf_map_fill					fdf_map_fill.c                            \cb2 calcul du radian de deg et iy\cb1 \
+								|-> fdf_map_rotation		fdf_map_fill.c                            \cb2 sans doute utile lors des mouvements\cb1 \
+								|-> fdf_map_relief		fdf_map_fill.c                            \cb2 calculateur de range a tester\cb1 \
+						|-> fdf_fill_img					fdf_fill_img.c                             condition pour dessiner l\'92image\
+							|-> fdf_put_pixel			fdf_put_pixel.c                          trie l\'92ordre du RGB ou BGR en fonction de l\'92ENDIAN\
+								|-> rrgb				fdf_color.c                                 filtre a bit pour n\'92avoir que des valeurs entre 0 et 255\
+							|-> fdf_bresenham			fdf_bresenham.c                       calcul de ratio en fonction de \cb2 base\cb1  et \cb2 current \cb1 \
+								|-> fdf_bresenham_if		fdf_bresenham_if.c                   calcul des valeurs filtr\'e9es en 0-255 pour \cb2 current\cb1  et \cb2 base\cb1 \
+									|-> rrgb			fdf_color.c                                 filtre a bit pour 0-255\
+									|-> fdf_bresenham_if_while	fdf_bresenham_if.c                   change la valeur color en se servant de la fonction suivante\
+										|->fdf_bresenham_if_while_color	fdf_bresenham_if.c                   grace a la function rgb on arrive a donner une valeur en 3 x 256\
+												|-> rgb	fdf_color.c                                 permet de donner un valeur en 255255255\
+										|->fdf_call_put_pixel	fdf_bresenham.c                       simple appel de la fonction put pixel\
+                                                                                                      |-> fdf_put_pixel          fdf_put_pixel.c                           rapport a nouveau a l\'92endian\
+								|-> fdf_bresenham_else	fdf_bresenham_else.c.             tout a fait similar a if\
+									|-> rrgb			fdf_color.c                                 filtre a bit\
+									|-> fdf_bresenham_else_while	fdf_bresenham_else.c              tout a fait similar a if\
+										|->fdf_bresenham_else_while_color     fdf_bresenham_else.c.    tout a fait similar a if\
+												|-> rgb	fdf_color.c                                 255255255\
+										|-> fdf_call_put_pixel	fdf_put_pixel.c                          appel de la function put pixel\
+         											|-> fdf_put_pixel          fdf_put_pixel.c                          rapport a l\'92endian\
+						|->fdf_colorset_screen			fdf_map_to_screen.c                petit check de valeur\
+								|-> fdf_put_pixel		fdf_put_pixel.c                          encore un parce qu\'92il faut pas se restreindre\
+								|-> mlx_put_image_to_window	minilibx                                     draw the image stored with mlx_new_image into window\
+          |->mlx_hook										minilibx                                     event listener\
+                   |->fdf_keypressed    							fdf_kezpressed,.c\
+          |->mlx_hook\
+                   |->fdf_quit									fdf_quit.c\
+          |->mlx_mouse_hook                                                                                                minilibx\
+                   |->fdf_mouseclick								fdf_mouseclick.c\
+          |-> mlx_loop										minilibx                                     permet d\'92attendre des evenements\
+    |-> close\
+\
+How things works:\
+\
+-args check\
+-open file\
+-check open file\
+-t_mlx data created\
+-args of struct data initialized\
+-connection to server\
+-get next line\
+-count number of columns	\
+-count number of lines\
+-free gnl\
+-storing the image to draw later\
+-address where the image is stored\cb2 \
+\cb1 -open file\
+-calloc creating for x axe\
+-calloc creating for y axe\
+-get next line\
+-z axe in struct\
+-max and min height val set\
+-range (max - min) set\
+-open window\
+-gradient tabs creating\
+-chose which color in the tab to use\
+-t_mlx dt created with pasted data from *data\
+-scale using hyp\
+-init 45 deg rotation right\
+-init 80 deg incl sur l\'92axe y\
+-init position of image centered\
+-calc of relief, scale of z axis\cb2  \cb1 \
+       \
+      \cb3 -\cf4 \expnd0\expndtw0\kerning0
+modified part when an event is done
+\f1 \cf5 \cb1 \
+
+\f0 \cf0 \kerning1\expnd0\expndtw0 \
+-calc deg_sin, deg_cos, iy_sin, iy_cos with rad\
+-calc of the center of rotation\
+-t_point current created with map[x][y] from data\
+-calculating every points regarding scale, origin, translate for rotation function\
+-calculating the y value related to the inclination for incl function\
+-t_point current created with map[x][y] from data\
+-t_color tcolor created\
+-check the pointer to the memory where the pixel color information is stored\
+-reverse rgb on endian 0 = pix 0 blue, pix 1 green, pix2 red, pix 3 alpha\
+-diff between current and base x and y\
+-calc the ratio  yrange / xrange and dispatch between if and else\
+-t_bresenham vr created\
+-dispatch to if or else regarding the range\
+-init the vr struct bcol, ccol, diff, current, ratio, i\
+-bresenham algo to determinate which pixel has to be printed\
+-calc the vr.current.color using rgb(rgb)\
+-rrgb to modify pixel +0 +1 +2 +3\
+-calc the gradient small screen only if screen is big enough, 255px x 25px\
+-print in the window, the image calculated\
+\
+\
+\
+\
+\
+Fixed value:\
+FDF_WIDTH: 1920\
+FDF_HEIGHT: 1080\
+RAD: 57.2958\
+\pard\pardeftab720\sl360\partightenfactor0
+
+\f1 \cf4 \cb2 \expnd0\expndtw0\kerning0
+\
+KV_ESCAPE 65307      // crash lors de ESC    \cb1 \
+\cb2 KV_ESCAPE_M 53\
+\
+KV_SPACE 32 // top view\
+KV_SPACE_M 49\
+\
+KV_PLUS 61    //not working\
+KV_PLUS_M 24    \
+KV_MINUS 45  //not working\
+KV_MINUS_M 27\
+\
+KV_PLUS2 65451 //?\
+KV_MINUS2 65453 //?\
+\
+KV_R 114 //?\
+KV_R_M 15 \
+\
+KV_P 112  //side view\
+KV_P_M 35\
+\
+KV_W 119 //up\
+KV_W_M 13\
+KV_A 97 //left\
+KV_A_M 0\
+KV_S 115 // Down\
+KV_S_M 1\
+KV_D 100 //Right\
+KV_D_M 2\
+\
+KV_C 99 //change gradient\
+KV_C_M 8\
+\
+KV_LEFTARROW 65361 //left rotate\
+KV_LEFTARROW_M 123\
+KV_RIGHTARROW 65363 //right rotate\
+KV_RIGHTARROW_M 124\
+KV_TOPARROW 65362 // top rotate\
+KV_TOPARROW_M  126\
+KV_BOTTOMARROW 65364 //bottom rotate\
+KV_BOTTOMARROW_M 125\
+\
+KV_LEFTCHEVRON 44 //?\
+KV_LEFTCHEVRON_M 43\
+KV_RIGHTCHEVRON 46 //?\
+KV_RIGHTCHEVRON_M 47\
+\
+/* Same on linux and macos */\
+KV_SCROLLUP 4. //zoom in \
+KV_SCROLLDOWN 5\
+KV_SCROLLLEFT 7 // zoom out\
+KV_SCROLLRIGHT 6\
+\
+KV_SCROLLBUTTON 2 //?\
+\
+KV_LEFTCLICK 1 //?\
+KV_RIGHTCLICK 3 //?\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9196\pardirnatural\partightenfactor0
+
+\f0 \cf0 \cb1 \kerning1\expnd0\expndtw0  \
+\
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9202\pardirnatural\partightenfactor0
+\cf0 \
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\tx9196\pardirnatural\partightenfactor0
+\cf0 \
+\
+\
+\
+\
+\
+}
