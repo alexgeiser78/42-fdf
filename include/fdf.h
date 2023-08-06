@@ -34,11 +34,11 @@
 # endif
 
 # ifndef deg_init
-#  define deg_init 0
+#  define deg_init 45
 # endif
 
 # ifndef incl_y
-#  define incl_y 0
+#  define incl_y 80
 # endif
 
 typedef struct s_point
