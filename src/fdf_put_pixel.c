@@ -39,6 +39,7 @@ int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 		return (0);
 	return (1);
 }
+
 //*pixel is a pointer to the memory where the pixel color 
 //information is stored
 //endian 1 for MacOs
@@ -60,6 +61,13 @@ int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 
 //	unsigned char q = *pixel;
 //	printf("%u", q);
+
+void	fdf_call_put_pixel(t_mlx *data, t_point current)
+{
+	fdf_put_pixel(data, current.color, data->img.str + \
+				((long)(current.y)*(long)data->img.size_line) + \
+				((long)(current.x)*(long)(data->img.bpp / 8)));
+}
 
 //int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 //{

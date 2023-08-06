@@ -27,12 +27,15 @@ static void	fdf_colorset_screen(t_mlx *data)
 		{
 			fdf_put_pixel(data, data->colors[x], data->img.str \
 	+ ((long)(y + 25)*(long)data->img.size_line) \
-	+ ((long)(FDF_WIDTH - 255 + x - 35)*(long)(data->img.bpp / 8)));
+	+ ((long)(FDF_WIDTH - 255 + x - 25)*(long)(data->img.bpp / 8)));
 			y++;
 		}
 		x++;
 	}
 }
+//small color table screen
+//will be 255 x 25
+//25px down and 25px to the left border
 
 int	fdf_map_to_screen(t_mlx *data)
 {
@@ -44,6 +47,7 @@ int	fdf_map_to_screen(t_mlx *data)
 	return (1);
 }
 //beginning of the modified part when an event is done
+//0, 0 = origin  of the draw
 
 //static void	fdf_colorset_screen(t_mlx *data)
 //{

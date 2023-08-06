@@ -57,6 +57,7 @@ void	fdf_creator(char *argv, int fd)
 //data.ptr = mlx_init(); //init the connection between 
 //the software and the screen
 //mlx_new_window generates the window where the image will be displayed
+// hook is an event listener like in JS
 
 int	main(int argc, char **argv)
 {

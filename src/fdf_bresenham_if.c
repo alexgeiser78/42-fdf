@@ -12,22 +12,28 @@
 
 #include "../include/fdf.h"
 
-static int	fdf_bresenham_if_while_color(t_point base, t_point current, t_bresenham vr)
+static int	fdf_bresenham_if_while_color(t_point base, t_point current, \
+t_bresenham vr)
 {
 	if (base.x < current.x)
 		vr.current.color = rgb(((vr.bcol.r * (1 - (vr.current.x - base.x) / \
-	vr.diff)) + (vr.ccol.r * (((vr.current.x - base.x) / vr.diff)))), ((vr.bcol.g \
-	* (1 - (vr.current.x - base.x) / vr.diff)) + (vr.ccol.g * (((vr.current.x - \
-	base.x) / vr.diff)))), ((vr.bcol.b * (1 - (vr.current.x - base.x) / vr.diff)) \
-	+ (vr.ccol.b * (((vr.current.x - base.x) / vr.diff)))));
+	vr.diff)) + (vr.ccol.r * (((vr.current.x - base.x) / \
+	vr.diff)))), ((vr.bcol.g * (1 - (vr.current.x - base.x) / \
+	vr.diff)) + (vr.ccol.g * (((vr.current.x - base.x) / \
+	vr.diff)))), ((vr.bcol.b * (1 - (vr.current.x - base.x) / \
+	vr.diff)) + (vr.ccol.b * (((vr.current.x - base.x) / vr.diff)))));
 	else
-		vr.current.color = rgb(((vr.bcol.r * ((vr.current.x - current.x) / vr.diff)) \
-	+ (vr.ccol.r * (1 - ((vr.current.x - current.x) / vr.diff)))), ((vr.bcol.g * \
-	((vr.current.x - current.x) / vr.diff)) + (vr.ccol.g * (1 - ((vr.current.x - \
-	current.x) / vr.diff)))), ((vr.bcol.b * ((vr.current.x - current.x) / vr.diff)) + \
-	(vr.ccol.b * (1 - ((vr.current.x - current.x) / vr.diff)))));
+		vr.current.color = rgb(((vr.bcol.r * ((vr.current.x - current.x) / \
+		vr.diff)) + (vr.ccol.r * (1 - ((vr.current.x - current.x) / \
+		vr.diff)))), ((vr.bcol.g * ((vr.current.x - current.x) / \
+		vr.diff)) + (vr.ccol.g * (1 - ((vr.current.x - current.x) / \
+		vr.diff)))), ((vr.bcol.b * ((vr.current.x - current.x) / \
+		vr.diff)) + (vr.ccol.b * (1 - ((vr.current.x - current.x) / \
+		vr.diff)))));
 	return (vr.current.color);
 }
+
+//used to calc the color add r g b values
 
 static void	fdf_bresenham_if_while(t_mlx *data, \
 		t_point base, t_point current, t_bresenham vr)
@@ -49,6 +55,8 @@ static void	fdf_bresenham_if_while(t_mlx *data, \
 			fdf_call_put_pixel(data, vr.current);
 	}
 }
+//algorithme of Bresenham to trace to most precise line using pixels
+// the + 0.5 is to discover which pixel is the closest to draw the line
 
 void	fdf_bresenham_if(t_mlx *data, \
 		t_point base, t_point current, float ratio)
@@ -68,6 +76,8 @@ void	fdf_bresenham_if(t_mlx *data, \
 	fdf_bresenham_if_while(data, base, current, vr);
 }
 //vr created with t_bresenham struct
+//struct init
+// fabs = absolute value of a floating point (-4 or +4 = 4)
 
 //static int	fdf_bresenham_if_while_color
 //(t_point s, t_point e, t_bresenham vr)

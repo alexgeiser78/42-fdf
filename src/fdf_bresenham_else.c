@@ -17,16 +17,18 @@ static int	fdf_bresenham_else_while_color(t_point base, \
 {
 	if (base.y < current.y)
 		vr.current.color = rgb(((vr.bcol.r * (1 - (vr.current.y - base.y) / \
-	vr.diff)) + (vr.ccol.r * (((vr.current.y - base.y) / vr.diff)))), ((vr.bcol.g \
-	* (1 - (vr.current.y - base.y) / vr.diff)) + (vr.ccol.g * (((vr.current.y - \
-	base.y) / vr.diff)))), ((vr.bcol.b * (1 - (vr.current.y - base.y) / vr.diff)) + \
+	vr.diff)) + (vr.ccol.r * (((vr.current.y - base.y) / \
+	vr.diff)))), ((vr.bcol.g * (1 - (vr.current.y - base.y) / \
+	vr.diff)) + (vr.ccol.g * (((vr.current.y - base.y) / \
+	vr.diff)))), ((vr.bcol.b * (1 - (vr.current.y - base.y) / vr.diff)) + \
 	(vr.ccol.b * (((vr.current.y - base.y) / vr.diff)))));
 	else
 		vr.current.color = rgb(((vr.bcol.r * ((vr.current.y - current.y) / \
 	vr.diff)) + (vr.ccol.r * (1 - ((vr.current.y - current.y) / vr.diff)))), \
 	((vr.bcol.g * ((vr.current.y - current.y) / vr.diff)) + (vr.ccol.g * (1 - \
-	((vr.current.y - current.y) / vr.diff)))), ((vr.bcol.b * ((vr.current.y - current.y) \
-	/ vr.diff)) + (vr.ccol.b * (1 - ((vr.current.y - current.y) / vr.diff)))));
+	((vr.current.y - current.y) / vr.diff)))), ((vr.bcol.b * ((vr.current.y - \
+	current.y) / vr.diff)) + (vr.ccol.b * (1 - ((vr.current.y - \
+	current.y) / vr.diff)))));
 	return (vr.current.color);
 }
 

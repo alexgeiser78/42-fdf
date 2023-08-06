@@ -12,13 +12,6 @@
 
 #include "../include/fdf.h"
 
-void	fdf_call_put_pixel(t_mlx *data, t_point current)
-{
-	fdf_put_pixel(data, current.color, data->img.str + \
-				((long)(current.y)*(long)data->img.size_line) + \
-				((long)(current.x)*(long)(data->img.bpp / 8)));
-}
-
 void	fdf_bresenham(t_mlx *data, t_point base, t_point current)
 {
 	float	xrange;
