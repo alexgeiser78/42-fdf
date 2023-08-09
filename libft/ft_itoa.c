@@ -25,10 +25,10 @@ static int	nbrlen(long int n)
 	while (n > 9)
 	{
 		n = n / 10;
-	i++;
-	}	
+		i++;
+	}
 	return (i);
-}	
+}
 //ligne 15 fonction de comptage de decimales d'un entier avec gestion 
 //de grands nombres(long)
 //ligne 20 gestion des nombres negatifs dans cette fonction
@@ -42,9 +42,9 @@ char	*ft_itoa(int n)
 
 	len = nbrlen(n);
 	if (n < 0)
-	un = (n * -1);
+		un = (n * -1);
 	else
-	un = n;
+		un = n;
 	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str != NULL)
 	{
@@ -55,11 +55,11 @@ char	*ft_itoa(int n)
 		else if (n == 0)
 			str[0] = '0';
 		while (un > 0)
-		{	
+		{
 			str[len--] = (char)(un % 10 + '0');
-				un = un / 10;
-		}	
-	}	
+			un = un / 10;
+		}
+	}
 	return (str);
 }
 //ligne 39 creation d-un pointeur sur char vu que ce sera le retour

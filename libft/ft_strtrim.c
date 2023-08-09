@@ -21,10 +21,10 @@ static int	is_in_set(char c, char const *set)
 	{
 		if (set[i] == c)
 			return (1);
-			i++;
-	}		
+		i++;
+	}
 	return (0);
-}	
+}
 
 char	*ft_strtrim(char const *s1, char const *set)
 {

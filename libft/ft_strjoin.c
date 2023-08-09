@@ -25,16 +25,16 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	while (s1[i] != '\0')
 	{
-	soutput[j] = s1[i];
-	i++;
-	j++;
+		soutput[j] = s1[i];
+		i++;
+		j++;
 	}
 	i = 0;
 	while (s2[i] != '\0')
 	{
-	soutput[j] = s2[i];
-	i++;
-	j++;
+		soutput[j] = s2[i];
+		i++;
+		j++;
 	}
 	soutput[j] = '\0';
 	return (soutput);

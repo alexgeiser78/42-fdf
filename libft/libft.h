@@ -16,9 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 32 //a checker
-#endif
+# ifndef BUFFER_SIZE
+# define BUFFER_SIZE 32
+# endif
 
 char	*get_next_line(int fd);
 //char	*ft_strchr(char *s, int c);

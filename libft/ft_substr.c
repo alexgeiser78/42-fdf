@@ -28,7 +28,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!soutput)
 		return (NULL);
 	ft_memcpy(soutput, s + start, len);
-		soutput[len] = '\0';
+	soutput[len] = '\0';
 	return (soutput);
 }
 //start =  val. comme [i]

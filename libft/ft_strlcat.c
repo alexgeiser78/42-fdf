@@ -20,20 +20,20 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	i = 0;
 	j = 0;
 	while (dst[i] != '\0')
-	i++;
+		i++;
 	if (dstsize < i)
 	{
 		while (src[j] != '\0')
-		j++;
+			j++;
 		return (dstsize + j);
 	}
 	while (dstsize > 0 && i < dstsize -1 && src[j] != '\0')
-	{	
+	{
 		dst[i] = src[j];
 		i++;
 		j++;
 	}
-		dst[i] = '\0';
+	dst[i] = '\0';
 	while (src[j++] != '\0')
 	{
 		i++;

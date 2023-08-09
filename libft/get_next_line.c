@@ -30,7 +30,7 @@ char	*ft_next(char *buffer)
 
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
-	i++;
+		i++;
 	if (!buffer[i])
 	{
 		free(buffer);
@@ -42,7 +42,7 @@ char	*ft_next(char *buffer)
 	i++;
 	j = 0;
 	while (buffer[i])
-	next_buffer[j++] = buffer[i++];
+		next_buffer[j++] = buffer[i++];
 	next_buffer[j] = '\0';
 	free(buffer);
 	return (next_buffer);
@@ -67,20 +67,20 @@ char	*ft_line_isolator(char *buffer)
 	if (!buffer[i])
 		return (NULL);
 	while (buffer[i] && buffer[i] != '\n')
-	i++;
+		i++;
 	line = (char *)malloc(sizeof(char) * (i + 2));
 	if (!line)
 		return (NULL);
 	i = 0;
 	while (buffer[i] && buffer[i] != '\n')
 	{
-	line[i] = buffer[i];
-	i++;
+		line[i] = buffer[i];
+		i++;
 	}
 	if (buffer[i] == '\n')
 	{
-	line[i] = buffer[i];
-	i++;
+		line[i] = buffer[i];
+		i++;
 	}
 	line[i] = '\0';
 	return (line);
@@ -115,8 +115,8 @@ char	*ft_file_reader(int fd, char *buffer)
 			free(buffer2);
 			return (NULL);
 		}
-	buffer2[byte_read] = '\0';
-	buffer = ft_join_free(buffer, buffer2);
+		buffer2[byte_read] = '\0';
+		buffer = ft_join_free(buffer, buffer2);
 	}
 	free(buffer2);
 	return (buffer);
@@ -154,10 +154,10 @@ char	*get_next_line(int fd)
 		{
 			free(buffer);
 			buffer = NULL;
-		}	
+		}
 		return (NULL);
 	}
-			buffer = ft_file_reader(fd, buffer);
+	buffer = ft_file_reader(fd, buffer);
 	if (!buffer)
 		return (NULL);
 	line = ft_line_isolator(buffer);

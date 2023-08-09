@@ -31,7 +31,7 @@ static int	count_words(const char *str, char c)
 		str++;
 	}
 	return (i);
-}	
+}
 //ligne 15 fonction qui compte le nombre de (c)
 //Utilise pour le malloc de la fonction principale
 
@@ -41,7 +41,7 @@ static char	**freemalloc(char **str, size_t index)
 		free(str[index]);
 	free(str);
 	return (0);
-}	
+}
 
 //ligne 15 fonctoin qui permet de liberer le malloc en cas de 
 //disfonctionnement
@@ -75,7 +75,7 @@ static char	**pointerwriter(char **str, char const *s, char c)
 		i++;
 	}
 	return (str);
-}	
+}
 
 //ligne 53 fonction qui ecrit les mots dans les pointeurs
 //ligne 62 tant qu'on est dans le string original

@@ -22,21 +22,21 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	if (needle[0] == '\0')
 		return ((char *)haystack);
 	while (haystack[i] != '\0' && i < len)
-	{		
+	{
 		if (haystack[i] == needle[j])
 		{
 			while (haystack[i + j] == needle[j] && i + j < len)
-			{		
+			{
 				if (needle[j + 1] == '\0')
 					return ((char *)(haystack + i));
-			j++;
+				j++;
 			}
 			j = 0;
 		}
 		i++;
 	}
 	return (NULL);
-}	
+}
 
 //ligne 22 if (needle == NULL || needle[0] == '\0')
 //ligne 30 dans le cas d une seule lettre needle

@@ -23,6 +23,6 @@ int	ft_lstsize(t_list *lst)
 		i++;
 	}
 	return (i);
-}	
+}
 //ligne 22 le pointeur lst = adresse pointeur vers next tant 
 //qu'il n-arrive pas a NULL

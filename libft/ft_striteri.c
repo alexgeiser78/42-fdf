@@ -21,14 +21,14 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	i2 = 0;
 	if (s != NULL && f != NULL)
 	{
-	i = ft_strlen(s);
+		i = ft_strlen(s);
 		while (i2 < i)
 		{
 			f(i2, s);
-		s++;
-		i2++;
+			s++;
+			i2++;
 		}
-	}	
-}	
+	}
+}
 //ligne 15 fonction qui applique la fonction (f) a chaque [i]
 //pas de retour de fonction
