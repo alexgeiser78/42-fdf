@@ -29,7 +29,7 @@ void	fdf_map_fill_z(t_mapctr *mapctr, int fd)
 		{
 			if (line[i] != ' ' && line[i] != '\n') 
 			{
-				mapz.z = (float)fdf_atoi_color(line + i, mapctr, x, y);
+				MAPZ.z = (float)fdf_atoi_color(line + i, mapctr, x, y);
 				x++;
 				while (line[i] && line[i] != ' ' && line[i] != '\n')
 					i++;

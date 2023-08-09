@@ -57,7 +57,8 @@ void	fdf_creator(char *argv, int fd)
 //data.ptr = mlx_init(); //init the connection between 
 //the software and the screen
 //mlx_new_window generates the window where the image will be displayed
-//mlx_hook(mlx_new_window, keypressed (x11 call), bit mask (bit 0) to 1, "A" key, function to call, data)
+//mlx_hook(mlx_new_window, keypressed (x11 call), bit mask (bit 0) to 1, 
+//"A" key, function to call, data)
 //mlx_hook(mlx_new_window, generic (x11 call), no mask,function to call, data)
 //mlx_mouse_hook(mlx_new_window, function to call, data)
 //mlx_loop(mlx_new_window(server init))

@@ -54,8 +54,8 @@ int	fdf_flat(t_mlx *dt)
 
 int	fdf_init2(t_mlx *dt)
 {
-	dt->deg = deg_init;
-	dt->iy = incl_y;
+	dt->deg = DEG_INIT;
+	dt->iy = INCL_Y;
 	dt->mapctr.translatex = 0;
 	dt->mapctr.translatey = 0;
 	dt->relief = hypotf(dt->mapctr.width, dt->mapctr.width) / 15;
