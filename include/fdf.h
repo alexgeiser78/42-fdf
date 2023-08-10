@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
+/*   By: mamita <mamita@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 16:09:48 by ageiser           #+#    #+#             */
-/*   Updated: 2023/05/19 16:09:51 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/08/10 18:58:33 by mamita           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <stdio.h>
 # include <math.h> //hypotf
 
-# define FDF_WIDTH 1920
-# define FDF_HEIGHT 1080
+# define FDF_WIDTH 400
+# define FDF_HEIGHT 300
 
 # ifndef RAD
 #  define RAD 57.2958 //1 radian = 57.2958 deg
@@ -206,7 +206,7 @@ void	fdf_empty_colormap(t_mlx *data, int *colors);
 
 #endif
 
-# ifndef KEYBOARDVALUES_H
+#ifndef KEYBOARDVALUES_H
 # define KEYBOARDVALUES_H
 
 # define KV_ESCAPE 65307

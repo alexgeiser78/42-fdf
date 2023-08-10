@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ageiser <ageiser@student.42barcelo>        +#+  +:+       +#+        */
+/*   By: mamita <mamita@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:27:24 by ageiser           #+#    #+#             */
-/*   Updated: 2022/10/07 12:46:50 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/08/10 20:59:26 by mamita           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# ifndef BUFFER_SIZE
+//# ifndef BUFFER_SIZE
 # define BUFFER_SIZE 32
-# endif
+//# endif
 
 char	*get_next_line(int fd);
 //char	*ft_strchr(char *s, int c);
