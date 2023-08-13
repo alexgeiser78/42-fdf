@@ -22,6 +22,10 @@ static int	fdf_rotate(int key, t_mlx *data)
 	fdf_map_to_screen(data);
 	return (1);
 }
+//always a clear image before every change
+//and a map to screen after
+//modify deg value to rotate
+//values changes always to make it smooth
 
 static int	fdf_translate(int key, t_mlx *data)
 {
@@ -37,6 +41,7 @@ static int	fdf_translate(int key, t_mlx *data)
 	fdf_map_to_screen(data);
 	return (1);
 }
+//modify the translate value to move the map
 
 static int	fdf_incline(int key, t_mlx *data)
 {
@@ -50,6 +55,7 @@ static int	fdf_incline(int key, t_mlx *data)
 	fdf_map_to_screen(data);
 	return (1);
 }
+//modify the incline value to change the angle of the map
 
 static int	fdf_relief(int key, t_mlx *data)
 {
@@ -63,6 +69,7 @@ static int	fdf_relief(int key, t_mlx *data)
 	fdf_map_to_screen(data);
 	return (1);
 }
+//modify relief value to change the height of the map
 
 int	fdf_keypressed(int key, void *param)
 {
@@ -83,7 +90,7 @@ int	fdf_keypressed(int key, void *param)
 		|| key == KV_P || key == KV_P_M)
 		fdf_incline(key, data);
 	else if (key == KV_C || key == KV_C_M)
-		fdf_changecolor(data);
+		fdf_changecolor(data); 
 	else if (key == KV_R || key == KV_R_M)
 		fdf_default(data);
 	else if (key == KV_SPACE || key == KV_SPACE_M)
@@ -92,6 +99,10 @@ int	fdf_keypressed(int key, void *param)
 		exit(fdf_free_all(data));
 	return (1);
 }
+
+//key dispatcher
+//fdf_changecolor, fdf_flat in fdf_default.c
+//fdf_free_all in fdf_free_all.c 
 /*
 static int	fdf_rotate(int key, t_mlx *data)
 {

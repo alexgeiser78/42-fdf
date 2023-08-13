@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf_put_pixel.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+        */
+/*   By: mamita <mamita@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/30 13:28:26 by ageiser           #+#    #+#             */
-/*   Updated: 2023/07/30 13:28:29 by ageiser          ###   ########.fr       */
+/*   Updated: 2023/08/14 01:14:58 by mamita           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
 
 //	unsigned char q = *pixel;
 //	printf("%u", q);
+//printf("tcolor r = %c g = %c b = %c\n", tcolor.r, 
+//tcolor.g, tcolor.b);
 
 void	fdf_call_put_pixel(t_mlx *data, t_point current)
 {
@@ -69,40 +71,6 @@ void	fdf_call_put_pixel(t_mlx *data, t_point current)
 				((long)(current.x)*(long)(data->img.bpp / 8)));
 }
 
-//int	fdf_put_pixel(t_mlx *data, int color, char *pixel)
-//{
-//	t_color	tcolor;
-	//printf("-entering put_pixel-\n");//
-	//printf("data->img.str = %c\n", *data->img.str);//pourquoi n'affiche rien?
-	//printf("pixel = %c\n", *pixel);//pourquoi n'affiche rien?
-//	if (pixel < data->img.str || pixel >= (data->img.str + 
-//			((FDF_HEIGHT - 1) * data->img.size_line) + 
-//			((FDF_WIDTH - 1) * (data->img.bpp / 8))))
-//		return (0); //control a comprendre
-//	tcolor = rrgb(color); //fonction de color.c
-	//printf("tcolor r = %c g = %c b = %c\n", tcolor.r, 
-	//tcolor.g, tcolor.b);//pourquoi n'affiche rien?
-//	if (data->img.endian == 1)// est-ce qu'on est en mode big ou little endian
-//	{
-//		*(pixel + 0) = 0;    
-// ce serait bien dans un tableau mais je comprends pas ce "+"
-//		*(pixel + 1) = tcolor.r; //?
-//		*(pixel + 2) = tcolor.g;
-//		*(pixel + 3) = tcolor.b;
-//	}
-//	else if (data->img.endian == 0)
-//	{
-//		*(pixel + 3) = 0;
-//		*(pixel + 2) = tcolor.r;
-//		*(pixel + 1) = tcolor.g;
-//		*(pixel + 0) = tcolor.b;
-//	}
-//	else
-//		return (0);
-	//printf("pixel + 0 = %s\n", pixel + 0);//
-	//printf("pixel + 1 = %s\n", pixel + 1);//
-	//printf("pixel + 2 = %s\n", pixel + 2);//
-	//printf("pixel + 3 = %s\n", pixel + 3);//
+//callback fuction when an event occurs
 
-//	return (1);
-//}
+

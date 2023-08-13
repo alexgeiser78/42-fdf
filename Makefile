@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ageiser <ageiser@student.42barcelona.com>  +#+  +:+       +#+         #
+#    By: mamita <mamita@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/19 17:04:25 by ageiser           #+#    #+#              #
-#    Updated: 2023/05/19 17:04:28 by ageiser          ###   ########.fr        #
+#    Updated: 2023/08/13 19:20:15 by mamita           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,9 +25,9 @@ CFLAGS = -Wall -Wextra -Werror -fsanitize=address
 RM = rm -rf
 
 SRC_FILES = main.c \
-			error.c \
-			filopmapsize.c \
-			map.c \
+			fdf_error.c \
+			fdf_filopmapsize.c \
+			fdf_map.c \
 			fdf_atoi.c \
 			fdf_findrange.c \
 			fdf_free_all.c \

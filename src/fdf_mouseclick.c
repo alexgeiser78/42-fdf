@@ -22,6 +22,7 @@ static int	fdf_rotate(int key, t_mlx *data)
 	fdf_map_to_screen(data);
 	return (1);
 }
+//modify deg value to rotate
 
 static int	fdf_zoom(int key, t_mlx *data)
 {
@@ -33,6 +34,7 @@ static int	fdf_zoom(int key, t_mlx *data)
 	fdf_map_to_screen(data);
 	return (1);
 }
+//modify scale value to zoom
 
 int	fdf_mouseclick(int key, int x, int y, void *param)
 {
