@@ -6,7 +6,7 @@
 #    By: mamita <mamita@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/19 17:04:25 by ageiser           #+#    #+#              #
-#    Updated: 2023/08/13 19:20:15 by mamita           ###   ########.fr        #
+#    Updated: 2023/08/14 18:48:55 by mamita           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,10 +46,6 @@ SRC_FILES = main.c \
 			fdf_keypressed.c \
 			fdf_mouseclick.c 
 			
-
-
-
-
 DEP = $(addprefix $(OBJ_DIR), $(SRC_FILES:.c=.d))
 
 TMP_SRC = $(addprefix $(SRC_DIR), $(SRC_FILES))
@@ -98,6 +94,7 @@ fclean: clean
 re: fclean all
 	@echo "$(GREEN)Make fclean and make all$(NO_COLOR)"
 
+bonus: all
 
 -include $(DEP)
 .PHONY: all clean fclean re
